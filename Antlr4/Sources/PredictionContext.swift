@@ -171,6 +171,8 @@ public class PredictionContext: Hashable, CustomStringConvertible {
             _ b: PredictionContext,
             _ rootIsWildcard: Bool,
             _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
+                var a = a
+                var b = b
         // assert ( a != nil && b != nil,"Expected: a!=null&&b!=null");
         //assert ( a!=nil && b!=nil,"Expected: a!=null&&b!=null"); // must be empty context, never null
         // share same graph if both same
@@ -199,10 +201,10 @@ public class PredictionContext: Hashable, CustomStringConvertible {
 
         // convert singleton so both are arrays to normalize
         if (a is SingletonPredictionContext) {
-            let a = ArrayPredictionContext(a as! SingletonPredictionContext)
+            a = ArrayPredictionContext(a as! SingletonPredictionContext)
         }
         if (b is SingletonPredictionContext) {
-            let b = ArrayPredictionContext(b as! SingletonPredictionContext)
+            b = ArrayPredictionContext(b as! SingletonPredictionContext)
         }
         return mergeArrays(a as! ArrayPredictionContext, b as! ArrayPredictionContext,
                 rootIsWildcard, mergeCache)
