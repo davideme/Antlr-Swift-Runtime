@@ -89,7 +89,8 @@ public class ATNDeserializer {
         self.init(ATNDeserializationOptions.getDefaultOptions())
     }
     // private var once = dispatch_once_t()
-    public init(var _ deserializationOptions: ATNDeserializationOptions?) {
+    public init(_ deserializationOptions: ATNDeserializationOptions?) {
+        var deserializationOptions = deserializationOptions
         if deserializationOptions == nil {
             deserializationOptions = ATNDeserializationOptions.getDefaultOptions()
         }

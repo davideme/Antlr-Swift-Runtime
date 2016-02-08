@@ -1,0 +1,235 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ATNSimulator"
+provides-nominal:
+- "C6Antlr412ATNSimulator"
+provides-member:
+- ["C6Antlr412ATNSimulator", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "FloatLiteralType"
+- "String"
+- "ATNSimulator"
+- "Bool"
+- "NSUUID"
+- !private "Dictionary"
+- "ATNConfigSet"
+- "Transition"
+- "IntervalSet"
+- "ATNDeserializer"
+- "ATN"
+- "Character"
+- "Int64"
+- "DFAState"
+- "PredictionContext"
+- !private "RuntimeException"
+- !private "StringLiteralType"
+- "ATNState"
+- !private "ANTLRError"
+- "Int"
+- !private "IntegerLiteralType"
+- !private "=="
+- "Array"
+- "PredictionContextCache"
+depends-member:
+- !private ["O6Antlr410ANTLRError", "UnsupportedOperation"]
+- !private ["O6Antlr410ANTLRError", "deinit"]
+- ["C6Antlr412ATNConfigSet", "init"]
+- ["C6Antlr415ATNDeserializer", "SERIALIZED_UUID"]
+- ["C6Antlr415ATNDeserializer", "SERIALIZED_VERSION"]
+- !private ["C6Antlr415ATNDeserializer", "checkCondition"]
+- !private ["C6Antlr415ATNDeserializer", "deserialize"]
+- !private ["C6Antlr415ATNDeserializer", "edgeFactory"]
+- !private ["C6Antlr415ATNDeserializer", "init"]
+- !private ["C6Antlr415ATNDeserializer", "stateFactory"]
+- !private ["C6Antlr412ATNSimulator", "ANTLRError"]
+- ["C6Antlr412ATNSimulator", "ATN"]
+- ["C6Antlr412ATNSimulator", "ATNConfigSet"]
+- ["C6Antlr412ATNSimulator", "ATNDeserializer"]
+- ["C6Antlr412ATNSimulator", "ATNState"]
+- ["C6Antlr412ATNSimulator", "Array"]
+- ["C6Antlr412ATNSimulator", "Bool"]
+- ["C6Antlr412ATNSimulator", "Character"]
+- ["C6Antlr412ATNSimulator", "DFAState"]
+- !private ["C6Antlr412ATNSimulator", "Dictionary"]
+- ["C6Antlr412ATNSimulator", "ERROR"]
+- ["C6Antlr412ATNSimulator", "Int"]
+- ["C6Antlr412ATNSimulator", "Int64"]
+- ["C6Antlr412ATNSimulator", "IntervalSet"]
+- ["C6Antlr412ATNSimulator", "NSUUID"]
+- ["C6Antlr412ATNSimulator", "PredictionContext"]
+- ["C6Antlr412ATNSimulator", "PredictionContextCache"]
+- !private ["C6Antlr412ATNSimulator", "RuntimeException"]
+- ["C6Antlr412ATNSimulator", "SERIALIZED_UUID"]
+- ["C6Antlr412ATNSimulator", "SERIALIZED_VERSION"]
+- ["C6Antlr412ATNSimulator", "String"]
+- ["C6Antlr412ATNSimulator", "Transition"]
+- ["C6Antlr412ATNSimulator", "atn"]
+- ["C6Antlr412ATNSimulator", "checkCondition"]
+- ["C6Antlr412ATNSimulator", "clearDFA"]
+- ["C6Antlr412ATNSimulator", "deinit"]
+- ["C6Antlr412ATNSimulator", "deserialize"]
+- ["C6Antlr412ATNSimulator", "edgeFactory"]
+- ["C6Antlr412ATNSimulator", "getCachedContext"]
+- ["C6Antlr412ATNSimulator", "getSharedContextCache"]
+- ["C6Antlr412ATNSimulator", "init"]
+- ["C6Antlr412ATNSimulator", "reset"]
+- ["C6Antlr412ATNSimulator", "sharedContextCache"]
+- ["C6Antlr412ATNSimulator", "stateFactory"]
+- ["C6Antlr412ATNSimulator", "toInt"]
+- ["C6Antlr412ATNSimulator", "toInt32"]
+- ["C6Antlr412ATNSimulator", "toLong"]
+- !private ["Ps9AnyObject", "ANTLRError"]
+- ["Ps9AnyObject", "ATNConfigSet"]
+- ["Ps9AnyObject", "ATNDeserializer"]
+- ["Ps9AnyObject", "DFAState"]
+- !private ["Ps9AnyObject", "Dictionary"]
+- ["Ps9AnyObject", "Int"]
+- !private ["Ps9AnyObject", "PredictionContext"]
+- !private ["Ps9AnyObject", "RuntimeException"]
+- ["Ps9AnyObject", "SERIALIZED_UUID"]
+- ["Ps9AnyObject", "SERIALIZED_VERSION"]
+- !private ["Ps9AnyObject", "atn"]
+- !private ["Ps9AnyObject", "checkCondition"]
+- !private ["Ps9AnyObject", "deserialize"]
+- !private ["Ps9AnyObject", "edgeFactory"]
+- !private ["Ps9AnyObject", "getCachedContext"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "sharedContextCache"]
+- !private ["Ps9AnyObject", "stateFactory"]
+- ["Ps9AnyObject", "stateNumber"]
+- !private ["Ps9AnyObject", "toInt"]
+- !private ["Ps9AnyObject", "toInt32"]
+- !private ["Ps9AnyObject", "toLong"]
+- ["Ps9AnyObject", ""]
+- ["Ps22BidirectionalIndexType", "max"]
+- ["Ps21BitwiseOperationsType", "max"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- ["Ps11CVarArgType", "max"]
+- !private ["Ps14CollectionType", "init"]
+- ["Ps10Comparable", "max"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- ["Ps29CustomPlaygroundQuickLookable", "max"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "init"]
+- ["Ps17CustomReflectable", "max"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "getCachedContext"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "max"]
+- ["Ps23CustomStringConvertible", "stateNumber"]
+- ["C6Antlr48DFAState", "init"]
+- ["C6Antlr48DFAState", "stateNumber"]
+- !private ["Vs10Dictionary", "init"]
+- !private ["Ps28DictionaryLiteralConvertible", "init"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "getCachedContext"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "max"]
+- ["Ps9Equatable", "stateNumber"]
+- !private ["Ps9ErrorType", "UnsupportedOperation"]
+- ["Ps16ForwardIndexType", "max"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "getCachedContext"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "max"]
+- ["Ps8Hashable", "stateNumber"]
+- !private ["Ps9Indexable", "init"]
+- ["Si", "max"]
+- ["Ps21IntegerArithmeticType", "max"]
+- ["Ps25IntegerLiteralConvertible", "max"]
+- ["Ps11IntegerType", "max"]
+- ["Ps14MirrorPathType", "max"]
+- !private ["Sq", "deinit"]
+- ["C6Antlr417PredictionContext", "deinit"]
+- !private ["C6Antlr417PredictionContext", "getCachedContext"]
+- !private ["C6Antlr422PredictionContextCache", "deinit"]
+- ["Ps21RandomAccessIndexType", "max"]
+- !private ["Ps12SequenceType", "init"]
+- ["Ps17SignedIntegerType", "max"]
+- ["Ps16SignedNumberType", "max"]
+- ["Ps10Strideable", "max"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- ["Ps33_BuiltinIntegerLiteralConvertible", "max"]
+- ["Ps14_Incrementable", "max"]
+- ["Ps22_IntegerArithmeticType", "max"]
+- ["Ps12_IntegerType", "max"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+- ["Ps21_ObjectiveCBridgeable", "max"]
+- ["Ps22_RandomAccessAmbiguity", "max"]
+- ["Ps18_SignedIntegerType", "max"]
+depends-nominal:
+- !private "O6Antlr410ANTLRError"
+- "C6Antlr412ATNConfigSet"
+- "C6Antlr415ATNDeserializer"
+- "C6Antlr412ATNSimulator"
+- "Ps9AnyObject"
+- "Ps22BidirectionalIndexType"
+- "Ps21BitwiseOperationsType"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- "Ps11CVarArgType"
+- !private "Ps14CollectionType"
+- "Ps10Comparable"
+- !private "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "C6Antlr48DFAState"
+- !private "Vs10Dictionary"
+- !private "Ps28DictionaryLiteralConvertible"
+- "Ps9Equatable"
+- !private "Ps9ErrorType"
+- "Ps16ForwardIndexType"
+- "Ps8Hashable"
+- !private "Ps9Indexable"
+- "Si"
+- "Ps21IntegerArithmeticType"
+- "Ps25IntegerLiteralConvertible"
+- "Ps11IntegerType"
+- "Ps14MirrorPathType"
+- !private "Sq"
+- "C6Antlr417PredictionContext"
+- !private "C6Antlr422PredictionContextCache"
+- "Ps21RandomAccessIndexType"
+- !private "Ps12SequenceType"
+- "Ps17SignedIntegerType"
+- "Ps16SignedNumberType"
+- "Ps10Strideable"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- "Ps33_BuiltinIntegerLiteralConvertible"
+- "Ps14_Incrementable"
+- "Ps22_IntegerArithmeticType"
+- "Ps12_IntegerType"
+- "Ps21_ObjectiveCBridgeable"
+- "Ps22_RandomAccessAmbiguity"
+- "Ps18_SignedIntegerType"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/module.map"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+interface-hash: "e1de086565355afed73105cec3d106e5"

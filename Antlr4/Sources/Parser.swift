@@ -968,7 +968,8 @@ public class Parser: Recognizer<ParserATNSimulator> {
         return getRuleInvocationStack(_ctx)
     }
 
-    public func getRuleInvocationStack(var p: RuleContext?) -> Array<String> {
+    public func getRuleInvocationStack(p: RuleContext?) -> Array<String> {
+        var p = p
         var ruleNames: [String] = getRuleNames()
         var stack: Array<String> = Array<String>()
         while p != nil {

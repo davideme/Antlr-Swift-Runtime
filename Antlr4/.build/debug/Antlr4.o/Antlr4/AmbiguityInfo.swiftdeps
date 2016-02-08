@@ -7,16 +7,16 @@ provides-member:
 - ["C6Antlr413AmbiguityInfo", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "BitSet"
-- !private "FloatLiteralType"
-- !private "IntegerLiteralType"
-- "DecisionEventInfo"
-- "Int"
-- "AmbiguityInfo"
 - "Bool"
 - "TokenStream"
+- "Int"
 - "ATNConfigSet"
+- "AmbiguityInfo"
+- !private "IntegerLiteralType"
 - !private "StringLiteralType"
+- "DecisionEventInfo"
+- "BitSet"
+- !private "FloatLiteralType"
 depends-member:
 - ["C6Antlr413AmbiguityInfo", "ATNConfigSet"]
 - ["C6Antlr413AmbiguityInfo", "BitSet"]

@@ -8,10 +8,10 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - "ANTLRErrorStrategy"
-- "Parser"
-- "AnyObject"
 - "Bool"
+- "AnyObject"
 - "Token"
+- "Parser"
 depends-member:
 - ["P6Antlr418ANTLRErrorStrategy", "AnyObject"]
 - ["P6Antlr418ANTLRErrorStrategy", "Bool"]

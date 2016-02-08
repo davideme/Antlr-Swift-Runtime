@@ -7,18 +7,18 @@ provides-member:
 - ["C6Antlr416ActionTransition", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "Int"
+- "CustomStringConvertible"
+- "Transition"
 - "ATNState"
+- "Int"
 - "String"
-- !private "BooleanLiteralType"
+- "Bool"
 - !private "FloatLiteralType"
 - "ActionTransition"
+- !private "BooleanLiteralType"
 - !private "IntegerLiteralType"
-- "Bool"
 - !private "+"
-- "Transition"
 - !private "StringLiteralType"
-- "CustomStringConvertible"
 depends-member:
 - ["C6Antlr416ActionTransition", "ATNState"]
 - ["C6Antlr416ActionTransition", "Bool"]

@@ -7,17 +7,17 @@ provides-member:
 - ["P6Antlr418ANTLRErrorListener", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "Int"
-- "String"
-- "ATNConfigSet"
 - "AnyObject"
-- "ANTLRErrorListener"
-- "Bool"
-- "ATNSimulator"
 - "Parser"
 - "Recognizer"
 - "DFA"
+- "ANTLRErrorListener"
 - "BitSet"
+- "Int"
+- "String"
+- "Bool"
+- "ATNSimulator"
+- "ATNConfigSet"
 depends-member:
 - ["P6Antlr418ANTLRErrorListener", "ATNConfigSet"]
 - ["P6Antlr418ANTLRErrorListener", "ATNSimulator"]

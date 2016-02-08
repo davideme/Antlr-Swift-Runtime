@@ -7,11 +7,11 @@ provides-member:
 - ["O6Antlr414ANTLRException", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- "ANTLRException"
+- !private "FloatLiteralType"
+- "ErrorType"
 - !private "IntegerLiteralType"
 - "AnyObject"
-- "ANTLRException"
-- "ErrorType"
-- !private "FloatLiteralType"
 depends-member:
 - ["O6Antlr414ANTLRException", "AnyObject"]
 - ["O6Antlr414ANTLRException", "CannotInvokeStartRule"]

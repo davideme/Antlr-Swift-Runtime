@@ -320,7 +320,8 @@ public class ParserATNSimulator: ATNSimulator {
     }
 
     public func adaptivePredict(input: TokenStream, _ decision: Int,
-                                var _ outerContext: ParserRuleContext?) throws -> Int {
+                                _ outerContext: ParserRuleContext?) throws -> Int {
+        var outerContext = outerContext
         if debug || debug_list_atn_decisions {
             try  print("adaptivePredict decision \(decision) exec LA(1)==\(getLookaheadName(input)) line \(input.LT(1)!.getLine()):\(input.LT(1)!.getCharPositionInLine())")
         }
@@ -1931,7 +1932,8 @@ public class ParserATNSimulator: ATNSimulator {
     internal func addDFAEdge(dfa: DFA,
                              _ from: DFAState?,
                              _ t: Int,
-                             var _ to: DFAState?) throws -> DFAState? {
+                             _ to: DFAState?) throws -> DFAState? {
+        var to = to
         if debug {
             print("EDGE \(from) -> \(to) upon \(getTokenName(t))")
         }

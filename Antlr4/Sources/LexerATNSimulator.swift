@@ -427,7 +427,8 @@ public class LexerATNSimulator: ATNSimulator {
      * @return {@code true} if an accept state is reached, otherwise
      * {@code false}.
      */
-    internal func closure(input: CharStream, _ config: LexerATNConfig, _ configs: ATNConfigSet, var _ currentAltReachedAcceptState: Bool, _ speculative: Bool, _ treatEofAsEpsilon: Bool) throws -> Bool {
+    internal func closure(input: CharStream, _ config: LexerATNConfig, _ configs: ATNConfigSet, _ currentAltReachedAcceptState: Bool, _ speculative: Bool, _ treatEofAsEpsilon: Bool) throws -> Bool {
+        var currentAltReachedAcceptState = currentAltReachedAcceptState
         if LexerATNSimulator.debug {
             print("closure(" + config.toString(recog, true) + ")")
         }

@@ -263,11 +263,12 @@ public class UnbufferedTokenStream<T>: TokenStream {
     }
 
 
-    public func seek(var index: Int) throws {
+    public func seek(index: Int) throws {
         // seek to absolute index
         if index == currentTokenIndex {
             return
         }
+        var index = index
 
         if index > currentTokenIndex {
             try sync(index - currentTokenIndex)

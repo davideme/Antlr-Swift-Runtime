@@ -76,7 +76,7 @@ public class ProfilingATNSimulator: ParserATNSimulator {
     }
 
     override
-    public func adaptivePredict(input: TokenStream, _ decision: Int, var _ outerContext: ParserRuleContext?) throws -> Int {
+    public func adaptivePredict(input: TokenStream, _ decision: Int, _ outerContext: ParserRuleContext?) throws -> Int {
 
         self._sllStopIndex = -1
         self._llStopIndex = -1

@@ -445,7 +445,8 @@ public class BitSet: Hashable, CustomStringConvertible {
     *         larger than {@code toIndex}
     * @since  1.4
     */
-    public func clear(fromIndex: Int, var _ toIndex: Int) throws {
+    public func clear(fromIndex: Int, _ toIndex: Int) throws {
+        var toIndex = toIndex
         try BitSet.checkRange(fromIndex, toIndex)
 
         if fromIndex == toIndex {
@@ -533,7 +534,8 @@ public class BitSet: Hashable, CustomStringConvertible {
     *         larger than {@code toIndex}
     * @since  1.4
     */
-    public func get(fromIndex: Int, var _ toIndex: Int) throws -> BitSet {
+    public func get(fromIndex: Int, _ toIndex: Int) throws -> BitSet {
+        var toIndex = toIndex
         try  BitSet.checkRange(fromIndex, toIndex)
 
         checkInvariants()
@@ -885,7 +887,8 @@ public class BitSet: Hashable, CustomStringConvertible {
         return sum
     }
 
-    public class func bitCount(var i: Int64) -> Int {
+    public class func bitCount(i: Int64) -> Int {
+        var i = i
         // HD, Figure 5-14
         i = i - ((i >>> 1) & 0x5555555555555555)
         i = (i & 0x3333333333333333) + ((i >>> 2) & 0x3333333333333333)

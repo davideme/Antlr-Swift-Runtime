@@ -1,0 +1,95 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ATNDeserializationOptions"
+provides-nominal:
+- "C6Antlr425ATNDeserializationOptions"
+provides-member:
+- ["C6Antlr425ATNDeserializationOptions", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Bool"
+- "ATNDeserializationOptions"
+- !private "StringLiteralType"
+- !private "ANTLRError"
+- "BooleanLiteralType"
+depends-member:
+- !private ["O6Antlr410ANTLRError", "IllegalState"]
+- !private ["O6Antlr410ANTLRError", "deinit"]
+- !private ["C6Antlr425ATNDeserializationOptions", "ANTLRError"]
+- ["C6Antlr425ATNDeserializationOptions", "ATNDeserializationOptions"]
+- ["C6Antlr425ATNDeserializationOptions", "Bool"]
+- ["C6Antlr425ATNDeserializationOptions", "defaultOptions"]
+- ["C6Antlr425ATNDeserializationOptions", "deinit"]
+- !private ["C6Antlr425ATNDeserializationOptions", "generateRuleBypassTransitions"]
+- ["C6Antlr425ATNDeserializationOptions", "getDefaultOptions"]
+- ["C6Antlr425ATNDeserializationOptions", "init"]
+- ["C6Antlr425ATNDeserializationOptions", "isGenerateRuleBypassTransitions"]
+- ["C6Antlr425ATNDeserializationOptions", "isReadOnly"]
+- ["C6Antlr425ATNDeserializationOptions", "isVerifyATN"]
+- ["C6Antlr425ATNDeserializationOptions", "makeReadOnly"]
+- !private ["C6Antlr425ATNDeserializationOptions", "readOnly"]
+- ["C6Antlr425ATNDeserializationOptions", "setGenerateRuleBypassTransitions"]
+- ["C6Antlr425ATNDeserializationOptions", "setVerifyATN"]
+- ["C6Antlr425ATNDeserializationOptions", "throwIfReadOnly"]
+- !private ["C6Antlr425ATNDeserializationOptions", "verifyATN"]
+- !private ["Ps9AnyObject", "ANTLRError"]
+- ["Ps9AnyObject", "ATNDeserializationOptions"]
+- !private ["Ps9AnyObject", "defaultOptions"]
+- !private ["Ps9AnyObject", "generateRuleBypassTransitions"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "isReadOnly"]
+- ["Ps9AnyObject", "makeReadOnly"]
+- !private ["Ps9AnyObject", "readOnly"]
+- !private ["Ps9AnyObject", "throwIfReadOnly"]
+- !private ["Ps9AnyObject", "verifyATN"]
+- ["Ps9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9ErrorType", "IllegalState"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "O6Antlr410ANTLRError"
+- "C6Antlr425ATNDeserializationOptions"
+- "Ps9AnyObject"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- !private "Ps23CustomStringConvertible"
+- !private "Ps9Equatable"
+- !private "Ps9ErrorType"
+- !private "Ps8Hashable"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/module.map"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+interface-hash: "2a2d9f429d2dd746a78c9b2391a0cdd3"

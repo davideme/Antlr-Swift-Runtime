@@ -7,20 +7,20 @@ provides-member:
 - ["C6Antlr424AbstractParseTreeVisitor", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "RuleNode"
 - !private "FloatLiteralType"
-- !private "Int"
-- !private "++"
+- !private "<"
+- "Bool"
+- "RuleNode"
+- "AbstractParseTreeVisitor"
 - !private "BooleanLiteralType"
+- "ParseTree"
+- "ErrorNode"
 - !private "!"
 - "ParseTreeVisitor"
-- "Bool"
-- "ParseTree"
 - "TerminalNode"
-- "ErrorNode"
-- "AbstractParseTreeVisitor"
+- !private "++"
 - !private "IntegerLiteralType"
-- !private "<"
+- !private "Int"
 depends-member:
 - ["C6Antlr424AbstractParseTreeVisitor", "Bool"]
 - ["C6Antlr424AbstractParseTreeVisitor", "ErrorNode"]

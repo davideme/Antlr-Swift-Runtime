@@ -8,10 +8,10 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - !private "IntegerLiteralType"
-- "String"
-- "ErrorType"
-- !private "FloatLiteralType"
 - "ANTLRError"
+- "String"
+- !private "FloatLiteralType"
+- "ErrorType"
 depends-member:
 - ["O6Antlr410ANTLRError", "IllegalArgument"]
 - ["O6Antlr410ANTLRError", "IllegalState"]

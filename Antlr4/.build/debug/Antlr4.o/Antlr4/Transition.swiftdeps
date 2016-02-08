@@ -1,0 +1,176 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Transition"
+provides-nominal:
+- "C6Antlr410Transition"
+provides-member:
+- ["C6Antlr410Transition", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Bool"
+- "IntegerLiteralType"
+- "NotSetTransition"
+- "String"
+- "RuleTransition"
+- "AtomTransition"
+- "Transition"
+- "PrecedencePredicateTransition"
+- !private "fatalError"
+- "ActionTransition"
+- "Dictionary"
+- "SetTransition"
+- "PredicateTransition"
+- "StringLiteralType"
+- !private "RuntimeException"
+- "RangeTransition"
+- !private "+"
+- "IntervalSet"
+- "Int"
+- !private "BooleanLiteralType"
+- "EpsilonTransition"
+- "NSStringFromClass"
+- "WildcardTransition"
+- "Array"
+- "FloatLiteralType"
+- "ATNState"
+depends-member:
+- ["C6Antlr416ActionTransition", "deinit"]
+- ["Ps9AnyObject", "ACTION"]
+- ["Ps9AnyObject", "ATOM"]
+- ["Ps9AnyObject", "ActionTransition"]
+- ["Ps9AnyObject", "AtomTransition"]
+- ["Ps9AnyObject", "EPSILON"]
+- ["Ps9AnyObject", "EpsilonTransition"]
+- ["Ps9AnyObject", "NOT_SET"]
+- ["Ps9AnyObject", "NSStringFromClass"]
+- ["Ps9AnyObject", "NotSetTransition"]
+- ["Ps9AnyObject", "PRECEDENCE"]
+- ["Ps9AnyObject", "PREDICATE"]
+- ["Ps9AnyObject", "PrecedencePredicateTransition"]
+- ["Ps9AnyObject", "PredicateTransition"]
+- ["Ps9AnyObject", "RANGE"]
+- ["Ps9AnyObject", "RULE"]
+- ["Ps9AnyObject", "RangeTransition"]
+- ["Ps9AnyObject", "RuleTransition"]
+- !private ["Ps9AnyObject", "RuntimeException"]
+- ["Ps9AnyObject", "SET"]
+- ["Ps9AnyObject", "SetTransition"]
+- ["Ps9AnyObject", "WILDCARD"]
+- ["Ps9AnyObject", "WildcardTransition"]
+- !private ["Ps9AnyObject", "fatalError"]
+- !private ["Ps9AnyObject", "target"]
+- ["Ps9AnyObject", ""]
+- ["C6Antlr414AtomTransition", "deinit"]
+- ["Ps14CollectionType", "Key"]
+- ["Ps14CollectionType", "Value"]
+- ["Ps28CustomDebugStringConvertible", "Key"]
+- ["Ps28CustomDebugStringConvertible", "Value"]
+- ["Ps17CustomReflectable", "Key"]
+- ["Ps17CustomReflectable", "Value"]
+- ["Ps23CustomStringConvertible", "Key"]
+- ["Ps23CustomStringConvertible", "Value"]
+- ["Vs10Dictionary", "Key"]
+- ["Vs10Dictionary", "Value"]
+- ["Ps28DictionaryLiteralConvertible", "Key"]
+- ["Ps28DictionaryLiteralConvertible", "Value"]
+- ["C6Antlr417EpsilonTransition", "deinit"]
+- ["Ps9Indexable", "Key"]
+- ["Ps9Indexable", "Value"]
+- ["C6Antlr416NotSetTransition", "deinit"]
+- ["C6Antlr429PrecedencePredicateTransition", "deinit"]
+- ["C6Antlr419PredicateTransition", "deinit"]
+- ["C6Antlr415RangeTransition", "deinit"]
+- ["C6Antlr414RuleTransition", "deinit"]
+- ["Ps12SequenceType", "Key"]
+- ["Ps12SequenceType", "Value"]
+- ["C6Antlr413SetTransition", "deinit"]
+- !private ["Vs12StaticString", "deinit"]
+- ["C6Antlr410Transition", "ACTION"]
+- ["C6Antlr410Transition", "ATNState"]
+- ["C6Antlr410Transition", "ATOM"]
+- ["C6Antlr410Transition", "ActionTransition"]
+- ["C6Antlr410Transition", "Array"]
+- ["C6Antlr410Transition", "AtomTransition"]
+- ["C6Antlr410Transition", "Bool"]
+- ["C6Antlr410Transition", "Dictionary"]
+- ["C6Antlr410Transition", "EPSILON"]
+- ["C6Antlr410Transition", "EpsilonTransition"]
+- ["C6Antlr410Transition", "Int"]
+- ["C6Antlr410Transition", "IntervalSet"]
+- ["C6Antlr410Transition", "NOT_SET"]
+- ["C6Antlr410Transition", "NSStringFromClass"]
+- ["C6Antlr410Transition", "NotSetTransition"]
+- ["C6Antlr410Transition", "PRECEDENCE"]
+- ["C6Antlr410Transition", "PREDICATE"]
+- ["C6Antlr410Transition", "PrecedencePredicateTransition"]
+- ["C6Antlr410Transition", "PredicateTransition"]
+- ["C6Antlr410Transition", "RANGE"]
+- ["C6Antlr410Transition", "RULE"]
+- ["C6Antlr410Transition", "RangeTransition"]
+- ["C6Antlr410Transition", "RuleTransition"]
+- !private ["C6Antlr410Transition", "RuntimeException"]
+- ["C6Antlr410Transition", "SET"]
+- ["C6Antlr410Transition", "SetTransition"]
+- ["C6Antlr410Transition", "String"]
+- ["C6Antlr410Transition", "WILDCARD"]
+- ["C6Antlr410Transition", "WildcardTransition"]
+- ["C6Antlr410Transition", "deinit"]
+- !private ["C6Antlr410Transition", "fatalError"]
+- ["C6Antlr410Transition", "getSerializationType"]
+- ["C6Antlr410Transition", "init"]
+- ["C6Antlr410Transition", "isEpsilon"]
+- ["C6Antlr410Transition", "labelIntervalSet"]
+- ["C6Antlr410Transition", "matches"]
+- ["C6Antlr410Transition", "serializationNames"]
+- ["C6Antlr410Transition", "serializationTypes"]
+- ["C6Antlr410Transition", "target"]
+- ["C6Antlr418WildcardTransition", "deinit"]
+- ["Ps21_ObjectiveCBridgeable", "Key"]
+- ["Ps21_ObjectiveCBridgeable", "Value"]
+depends-nominal:
+- "C6Antlr416ActionTransition"
+- "Ps9AnyObject"
+- "C6Antlr414AtomTransition"
+- "Ps14CollectionType"
+- "Ps28CustomDebugStringConvertible"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Vs10Dictionary"
+- "Ps28DictionaryLiteralConvertible"
+- "C6Antlr417EpsilonTransition"
+- "Ps9Indexable"
+- "C6Antlr416NotSetTransition"
+- "C6Antlr429PrecedencePredicateTransition"
+- "C6Antlr419PredicateTransition"
+- "C6Antlr415RangeTransition"
+- "C6Antlr414RuleTransition"
+- "Ps12SequenceType"
+- "C6Antlr413SetTransition"
+- !private "Vs12StaticString"
+- "C6Antlr410Transition"
+- "C6Antlr418WildcardTransition"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/shims/module.map"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+interface-hash: "c66504a6632ada2c38088b2b74481dfb"

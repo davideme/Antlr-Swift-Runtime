@@ -83,7 +83,8 @@ public class PredictionContext: Hashable, CustomStringConvertible {
     /** Convert a {@link org.antlr.v4.runtime.RuleContext} tree to a {@link org.antlr.v4.runtime.atn.PredictionContext} graph.
      *  Return {@link #EMPTY} if {@code outerContext} is empty or null.
      */
-    public class func fromRuleContext(atn: ATN, var _ outerContext: RuleContext?) -> PredictionContext {
+    public class func fromRuleContext(atn: ATN, _ outerContext: RuleContext?) -> PredictionContext {
+        var outerContext = outerContext
         if (outerContext == nil) {
             outerContext = RuleContext.EMPTY
         }
@@ -166,8 +167,8 @@ public class PredictionContext: Hashable, CustomStringConvertible {
 
     // dispatch
     public class func merge(
-            var a: PredictionContext,
-            var _ b: PredictionContext,
+            a: PredictionContext,
+            _ b: PredictionContext,
             _ rootIsWildcard: Bool,
             _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
         // assert ( a != nil && b != nil,"Expected: a!=null&&b!=null");
@@ -198,10 +199,10 @@ public class PredictionContext: Hashable, CustomStringConvertible {
 
         // convert singleton so both are arrays to normalize
         if (a is SingletonPredictionContext) {
-            a = ArrayPredictionContext(a as! SingletonPredictionContext)
+            let a = ArrayPredictionContext(a as! SingletonPredictionContext)
         }
         if (b is SingletonPredictionContext) {
-            b = ArrayPredictionContext(b as! SingletonPredictionContext)
+            let b = ArrayPredictionContext(b as! SingletonPredictionContext)
         }
         return mergeArrays(a as! ArrayPredictionContext, b as! ArrayPredictionContext,
                 rootIsWildcard, mergeCache)

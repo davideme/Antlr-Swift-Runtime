@@ -157,7 +157,8 @@ public class ANTLRInputStream: CharStream {
     }
 
 
-    public func LA(var i: Int) -> Int {
+    public func LA(i: Int) -> Int {
+        var i = i
         if i == 0 {
             return 0 // undefined
         }
@@ -206,7 +207,8 @@ public class ANTLRInputStream: CharStream {
      *  update line and charPositionInLine. If we seek backwards, just set p
      */
 
-    public func seek(var index: Int) throws {
+    public func seek(index: Int) throws {
+        var index = index
         if index <= p {
             p = index // just jump; don't update stream state (line, ...)
             return
