@@ -595,8 +595,7 @@ public class DefaultErrorStrategy: ANTLRErrorStrategy {
         if current.getType() == CommonToken.EOF && lookback != nil {
             current = lookback!
         }
-        return
-        recognizer.getTokenFactory().create((current.getTokenSource(), current.getTokenSource()!.getInputStream()), expectedTokenType, tokenText,
+        return recognizer.getTokenFactory().create((current.getTokenSource(), current.getTokenSource()!.getInputStream()), expectedTokenType, tokenText,
                 CommonToken.DEFAULT_CHANNEL,
                 -1, -1,
                 current.getLine(), current.getCharPositionInLine())
