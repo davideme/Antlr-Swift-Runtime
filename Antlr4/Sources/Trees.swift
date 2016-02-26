@@ -99,7 +99,7 @@ public class Trees {
         s = Utils.escapeWhitespace(getNodeText(t, ruleNames), false)
         buf.append(s)
         buf.append(" ")
-        for var i: Int = 0; i < t.getChildCount(); i++ {
+        for i in 0 ..< t.getChildCount() {
             if i > 0 {
                 buf.append(" ")
             }
@@ -147,7 +147,7 @@ public class Trees {
     /** Return ordered list of all children of this node */
     public class func getChildren(t: Tree) -> Array<Tree> {
         var kids: Array<Tree> = Array<Tree>()
-        for var i: Int = 0; i < t.getChildCount(); i++ {
+        for i: Int in 0 ..< t.getChildCount() {
             kids.append(t.getChild(i)!)
         }
         return kids
@@ -205,7 +205,7 @@ public class Trees {
             }
         }
         // check children
-        for var i: Int = 0; i < t.getChildCount(); i++ {
+        for i: Int in 0 ..< t.getChildCount() {
             _findAllNodes(t.getChild(i) as! ParseTree, index, findTokens, &nodes)
         }
     }
@@ -215,7 +215,7 @@ public class Trees {
         nodes.append(t)
 
         let n: Int = t.getChildCount()
-        for var i: Int = 0; i < n; i++ {
+        for i: Int in 0 ..< n {
 
             //nodes.addAll(descendants(t.getChild(i)));
             let child = t.getChild(i)
@@ -237,7 +237,7 @@ public class Trees {
                                                       _ stopTokenIndex: Int) -> ParserRuleContext? {
         let n: Int = t.getChildCount()
 
-        for var i: Int = 0; i < n; i++ {
+        for i: Int in 0 ..< n {
             //TODO t.getChild(i) nil
             let child: ParseTree? = t.getChild(i) as? ParseTree
             //Added by janyou

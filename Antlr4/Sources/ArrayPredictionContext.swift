@@ -92,7 +92,7 @@ public class ArrayPredictionContext: PredictionContext {
         }
         let buf: StringBuilder = StringBuilder()
         buf.append("[")
-        for var i: Int = 0; i < returnStates.count; i++ {
+        for i: Int in 0 ..< returnStates.count {
             if i > 0 {
                 buf.append(", ")
             }

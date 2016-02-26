@@ -50,7 +50,8 @@ public class PredictionContext: Hashable, CustomStringConvertible {
 
     public static var globalNodeCount: Int = 0
     public var id: Int = {
-        return globalNodeCount++
+        globalNodeCount += 1
+        return globalNodeCount
     }()
 
     /**
@@ -467,34 +468,34 @@ public class PredictionContext: Hashable, CustomStringConvertible {
                     mergedParents[k] = mergedParent
                     mergedReturnStates[k] = payload
                 }
-                i++ // hop over left one as usual
-                j++ // but also skip one in right side since we merge
+                i += 1 // hop over left one as usual
+                j += 1 // but also skip one in right side since we merge
             } else if (a.returnStates[i] < b.returnStates[j]) {
                 // copy a[i] to M
                 mergedParents[k] = a_parent
                 mergedReturnStates[k] = a.returnStates[i]
-                i++
+                i += 1
             } else {
                 // b > a, copy b[j] to M
                 mergedParents[k] = b_parent
                 mergedReturnStates[k] = b.returnStates[j]
-                j++
+                j += 1
             }
-            k++
+            k += 1
         }
 
         // copy over any payloads remaining in either array
         if (i < a.returnStates.count) {
-            for var p: Int = i; p < a.returnStates.count; p++ {
+            for p: Int in i ..< a.returnStates.count {
                 mergedParents[k] = a.parents[p]
                 mergedReturnStates[k] = a.returnStates[p]
-                k++
+                k += 1
             }
         } else {
-            for var p: Int = j; p < b.returnStates.count; p++ {
+            for p: Int in j ..< b.returnStates.count {
                 mergedParents[k] = b.parents[p]
                 mergedReturnStates[k] = b.returnStates[p]
-                k++
+                k += 1
             }
         }
 
@@ -553,7 +554,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         var uniqueParents: Dictionary<PredictionContext, PredictionContext> =
         Dictionary<PredictionContext, PredictionContext>()
 
-        for var p: Int = 0; p < parents.count; p++ {
+        for p: Int in 0 ..< parents.count {
             let parent: PredictionContext? = parents[p]
             if parent != nil && !uniqueParents.keys.contains(parent!) {
                 // don't replace
@@ -561,7 +562,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
             }
         }
 
-        for var p: Int = 0; p < parents.count; p++ {
+        for p: Int in 0 ..< parents.count {
             parents[p] = (parents[p] == nil) ? nil : uniqueParents[parents[p]!]
         }
 
@@ -615,7 +616,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
             if (current == EMPTY) {
                 continue
             }
-            for var i: Int = 0; i < current.size(); i++ {
+            for i: Int in 0 ..< current.size() {
                 if (current.getParent(i) == nil) {
                     continue
                 }
@@ -657,7 +658,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
 
         var changed: Bool = false
         var parents: [PredictionContext?] = [PredictionContext?](count: context.size(), repeatedValue: nil)
-        for var i: Int = 0; i < parents.count; i++ {
+        for i: Int in 0 ..< parents.count {
             //added by janyou
             if context.getParent(i) == nil {
                 return context
@@ -667,7 +668,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
             if (changed || parent != context.getParent(i)) {
                 if (!changed) {
                     parents = [PredictionContext?](count: context.size(), repeatedValue: nil)
-                    for var j: Int = 0; j < context.size(); j++ {
+                    for j: Int in 0 ..< context.size() {
                         parents[j] = context.getParent(j)
                     }
 
@@ -722,7 +723,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         }
         visited[context!] = context!
         nodes.append(context!)
-        for var i: Int = 0; i < context!.size(); i++ {
+        for i: Int in 0 ..< context!.size() {
             getAllContextNodes_(context!.getParent(i), &nodes, &visited)
         }
     }
@@ -741,7 +742,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         var result: Array<String> = Array<String>()
 
         outer:
-        for var perm: Int = 0;; perm++ {
+        for var perm: Int = 0;; perm += 1 {
             var offset: Int = 0
             var last: Bool = true
             var p: PredictionContext = self
@@ -753,7 +754,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
                 if (p.size() > 0) {
                     var bits: Int = 1
                     while (1 << bits) < p.size() {
-                        bits++
+                        bits += 1
                     }
 
                     let mask: Int = (1 << bits) - 1
