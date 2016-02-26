@@ -851,7 +851,7 @@ public class ParserATNSimulator: ATNSimulator {
             var closureBusy: Set<ATNConfig> = Set<ATNConfig>()
             let treatEofAsEpsilon: Bool = t == CommonToken.EOF
             for c: ATNConfig in intermediate.configs {
-                // print(__FUNCTION__)
+                // print(#function)
                 try closure(c, reach!, &closureBusy, false, fullCtx, treatEofAsEpsilon)
             }
         }
@@ -1469,7 +1469,7 @@ public class ParserATNSimulator: ATNSimulator {
                                            _ depth: Int,
                                            _ treatEofAsEpsilon: Bool) throws {
 
-        // print(__FUNCTION__ + "  depth:\(depth)" )
+        // print(#function + "  depth:\(depth)" )
         if debug {
             print("closure(" + config.toString(parser, true) + ")")
         }
@@ -1542,7 +1542,7 @@ public class ParserATNSimulator: ATNSimulator {
                            _ fullCtx: Bool,
                            _ depth: Int,
                            _ treatEofAsEpsilon: Bool) throws {
-        // print(__FUNCTION__)
+        // print(#function)
         //long startTime = System.currentTimeMillis();
         let p: ATNState = config.state
         // optimization
