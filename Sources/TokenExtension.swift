@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Token {
+public extension Token {
 
     static public var INVALID_TYPE: Int {
         return 0
