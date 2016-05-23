@@ -136,7 +136,7 @@ public class AbstractParseTreeVisitor<T>: ParseTreeVisitor<T> {
      *
      * @return The updated aggregate result.
      */
-    internal func aggregateResult(aggregate: T?, _ nextResult: T?) -> T? {
+    internal func aggregateResult(_ aggregate: T?, _ nextResult: T?) -> T? {
         return nextResult
     }
 
@@ -164,7 +164,7 @@ public class AbstractParseTreeVisitor<T>: ParseTreeVisitor<T> {
      * {@code false} to stop visiting children and immediately return the
      * current aggregate result from {@link #visitChildren}.
      */
-    internal func shouldVisitNextChild(node: RuleNode, _ currentResult: T?) -> Bool {
+    internal func shouldVisitNextChild(_ node: RuleNode, _ currentResult: T?) -> Bool {
         return true
     }
 

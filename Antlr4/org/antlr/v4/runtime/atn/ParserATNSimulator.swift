@@ -1915,7 +1915,7 @@ public class ParserATNSimulator: ATNSimulator {
         // }
     }
     
-    func reportContextSensitivity(dfa: DFA, _ prediction: Int, _ configs: ATNConfigSet, _ startIndex: Int, _ stopIndex: Int) throws {
+    func reportContextSensitivity(_ dfa: DFA, _ prediction: Int, _ configs: ATNConfigSet, _ startIndex: Int, _ stopIndex: Int) throws {
         if debug || retry_debug {
             let interval: Interval = Interval.of(startIndex, stopIndex)
             try print("reportContextSensitivity decision=\(dfa.decision):\(configs), input=\(parser.getTokenStream()!.getText(interval))")

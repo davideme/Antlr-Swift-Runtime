@@ -612,7 +612,7 @@ public class BitSet: Hashable, CustomStringConvertible {
     * @throws IndexOutOfBoundsException if the specified index is negative
     * @since  1.4
     */
-    public func nextSetBit(fromIndex: Int) throws -> Int {
+    public func nextSetBit(_ fromIndex: Int) throws -> Int {
         if fromIndex < 0 {
             throw ANTLRError.IndexOutOfBounds(msg: "fromIndex < 0: \(fromIndex)")
 

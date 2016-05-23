@@ -112,7 +112,7 @@ public protocol ANTLRErrorListener: class {
      * @param configs the ATN configuration set where the ambiguity was
      * identified
      */
-    func reportAmbiguity(recognizer: Parser,
+    func reportAmbiguity(_ recognizer: Parser,
                          _ dfa: DFA,
                          _ startIndex: Int,
                          _ stopIndex: Int,
@@ -143,7 +143,7 @@ public protocol ANTLRErrorListener: class {
      * @param configs the ATN configuration set where the SLL conflict was
      * detected
      */
-    func reportAttemptingFullContext(recognizer: Parser,
+    func reportAttemptingFullContext(_ recognizer: Parser,
                                      _ dfa: DFA,
                                      _ startIndex: Int,
                                      _ stopIndex: Int,
@@ -188,7 +188,7 @@ public protocol ANTLRErrorListener: class {
      * @param configs the ATN configuration set where the unambiguous prediction
      * was determined
      */
-    func reportContextSensitivity(recognizer: Parser,
+    func reportContextSensitivity(_ recognizer: Parser,
                                   _ dfa: DFA,
                                   _ startIndex: Int,
                                   _ stopIndex: Int,

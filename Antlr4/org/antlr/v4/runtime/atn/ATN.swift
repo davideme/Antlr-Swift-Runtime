@@ -165,7 +165,7 @@ public class ATN {
      * @throws IllegalArgumentException if the ATN does not contain a state with
      * number {@code stateNumber}
      */
-    public func getExpectedTokens(stateNumber: Int, _ context: RuleContext) throws -> IntervalSet {
+    public func getExpectedTokens(_ stateNumber: Int, _ context: RuleContext) throws -> IntervalSet {
         if stateNumber < 0 || stateNumber >= states.count {
             throw ANTLRError.IllegalArgument(msg: "Invalid state number.")
             /* throw IllegalArgumentException("Invalid state number."); */

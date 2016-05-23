@@ -219,7 +219,7 @@ public class ATNConfigSet: Hashable, CustomStringConvertible {
         return configs[i]
     }
     
-    public final func optimizeConfigs(interpreter: ATNSimulator) throws {
+    public final func optimizeConfigs(_ interpreter: ATNSimulator) throws {
         if readonly {
             throw ANTLRError.IllegalState(msg: "This set is readonly")
             
@@ -299,7 +299,7 @@ public class ATNConfigSet: Hashable, CustomStringConvertible {
         return readonly
     }
     
-    public final func setReadonly(readonly: Bool) {
+    public final func setReadonly(_ readonly: Bool) {
         self.readonly = readonly
         configLookup.removeAll()
         
