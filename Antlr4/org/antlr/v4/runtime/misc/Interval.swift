@@ -37,7 +37,8 @@ public class Interval: Hashable {
 
     public static let INVALID: Interval = Interval(-1, -2)
 
-    static var cache: Dictionary<Int, Interval> = Dictionary<Int, Interval>()
+    //static var cache: Dictionary<Int, Interval> = Dictionary<Int, Interval>()
+    static var cache: Array<Interval?> = Array<Interval?>(count: INTERVAL_POOL_MAX_VALUE + 1, repeatedValue: nil)
     // new; Interval[INTERVAL_POOL_MAX_VALUE+1];
 
     public var a: Int
@@ -59,7 +60,7 @@ public class Interval: Hashable {
      *  Interval object with a..a in it.  On Java.g4, 218623 IntervalSets
      *  have a..a (set with 1 element).
      */
-    public class func of(a: Int, _ b: Int) -> Interval {
+    public static func of(a: Int, _ b: Int) -> Interval {
         // cache just a..a
         if a != b || a < 0 || a > INTERVAL_POOL_MAX_VALUE {
             return Interval(a, b)

@@ -57,9 +57,10 @@ public class LL1Analyzer {
         if s == nil {
             return nil
         }
-
-        var look: [IntervalSet?] = [IntervalSet?]()   //new IntervalSet[s.getNumberOfTransitions()];
-        for var alt: Int = 0; alt < s!.getNumberOfTransitions(); alt++ {
+        let length = s!.getNumberOfTransitions()
+        var look: [IntervalSet?] = [IntervalSet?](count: length, repeatedValue: nil)
+        //new IntervalSet[s.getNumberOfTransitions()];
+        for alt in 0..<length {
             look[alt] = try IntervalSet()
             var lookBusy: Set<ATNConfig> = Set<ATNConfig>()
             let seeThruPreds: Bool = false // fail to get lookahead upon pred
@@ -201,7 +202,8 @@ public class LL1Analyzer {
 
             if ctx != PredictionContext.EMPTY {
                 // run thru all possible stack tops in ctx
-                for var i: Int = 0; i < ctx!.size(); i++ {
+                let length = ctx!.size()
+                for i in 0..<length {
                     var returnState: ATNState = atn.states[(ctx!.getReturnState(i))]!
 
 
@@ -222,7 +224,7 @@ public class LL1Analyzer {
         }
 
         var n: Int = s.getNumberOfTransitions()
-        for var i: Int = 0; i < n; i++ {
+        for i in 0..<n {
             var t: Transition = s.transition(i)
             if t.dynamicType === RuleTransition.self {
                 if try calledRuleStack.get((t as! RuleTransition).target.ruleIndex!) {

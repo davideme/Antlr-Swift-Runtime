@@ -62,7 +62,7 @@ public class SemanticContext: Hashable, CustomStringConvertible {
     * dependent predicate evaluation.</p>
     */
     public func eval<T:ATNSimulator>(parser: Recognizer<T>, _ parserCallStack: RuleContext) throws -> Bool {
-        RuntimeException(__FUNCTION__ + " must be overridden")
+        RuntimeException(#function + " must be overridden")
         return false
     }
 
@@ -88,11 +88,11 @@ public class SemanticContext: Hashable, CustomStringConvertible {
         return self
     }
     public var hashValue: Int {
-        RuntimeException(__FUNCTION__ + " must be overridden")
+        RuntimeException(#function + " must be overridden")
         return 0
     }
     public var description: String {
-        RuntimeException(__FUNCTION__ + " must be overridden")
+        RuntimeException(#function + " must be overridden")
         return ""
     }
 
@@ -302,7 +302,8 @@ public class SemanticContext: Hashable, CustomStringConvertible {
             }
 
             var result: SemanticContext = operands[0]
-            for var i: Int = 1; i < operands.count; i++ {
+            let length = operands.count
+            for i in 1..<length {
                 result = SemanticContext.and(result, operands[i])
             }
 
@@ -415,7 +416,8 @@ public class SemanticContext: Hashable, CustomStringConvertible {
             }
 
             var result: SemanticContext = operands[0]
-            for var i: Int = 1; i < operands.count; i++ {
+            let length = operands.count
+            for i in 1..<length {
                 result = SemanticContext.or(result, operands[i])
             }
 
@@ -434,7 +436,7 @@ public class SemanticContext: Hashable, CustomStringConvertible {
         }
     }
 
-    public class func and(a: SemanticContext?, _ b: SemanticContext?) -> SemanticContext {
+    public static func and(a: SemanticContext?, _ b: SemanticContext?) -> SemanticContext {
         if a == nil || a == SemanticContext.NONE {
             return b!
         }
@@ -453,7 +455,7 @@ public class SemanticContext: Hashable, CustomStringConvertible {
     *
     *  @see org.antlr.v4.runtime.atn.ParserATNSimulator#getPredsForAmbigAlts
     */
-    public class func or(a: SemanticContext?, _ b: SemanticContext?) -> SemanticContext {
+    public static func or(a: SemanticContext?, _ b: SemanticContext?) -> SemanticContext {
         if a == nil {
             return b!
         }
@@ -471,7 +473,7 @@ public class SemanticContext: Hashable, CustomStringConvertible {
         return result
     }
 
-    private class func filterPrecedencePredicates(
+    private static func filterPrecedencePredicates(
             inout collection: Set<SemanticContext>) ->
             Array<PrecedencePredicate> {
 

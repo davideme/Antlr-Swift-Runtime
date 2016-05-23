@@ -35,10 +35,10 @@
  *  can be used for both lexers and parsers.
  */
 
-public class PredictionContextCache {
+public final class PredictionContextCache {
     //internal final var
-    var cache: Dictionary<PredictionContext, PredictionContext> =
-    Dictionary<PredictionContext, PredictionContext>()
+    var cache: HashMap<PredictionContext, PredictionContext> =
+    HashMap<PredictionContext, PredictionContext>()
     public init() {
     }
     /** Add a context to the cache and return it. If the context already exists,

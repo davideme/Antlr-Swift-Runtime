@@ -13,10 +13,11 @@ public enum LookupDictionaryType: Int {
     case Ordered
 }
 
-public class LookupDictionary {
+public struct LookupDictionary {
     private var type: LookupDictionaryType
-    private var cache: Dictionary<Int, [ATNConfig]> = Dictionary<Int, [ATNConfig]>()
-
+//    private var cache: HashMap<Int, [ATNConfig]> = HashMap<Int, [ATNConfig]>()
+//   
+    private var cache: HashMap<Int, ATNConfig> = HashMap<Int, ATNConfig>()
     public init(type: LookupDictionaryType = LookupDictionaryType.Lookup) {
         self.type = type
     }
@@ -56,48 +57,68 @@ public class LookupDictionary {
         }
     }
 
-    public func getOrAdd(config: ATNConfig) -> ATNConfig {
-
-        let h = hash(config)
-        var configList = cache[h]
-        if configList != nil {
-            for c in configList! {
-                if equal(c, config) {
-                    return c
-                }
+//    public mutating func getOrAdd(config: ATNConfig) -> ATNConfig {
+//
+//        let h = hash(config)
+//        
+//        if let configList = cache[h] {
+//            let length = configList.count
+//            for i in 0..<length {
+//                if equal(configList[i], config) {
+//                    return configList[i]
+//                }
+//            }
+//            cache[h]!.append(config)
+//        } else {
+//            cache[h] = [config]
+//        }
+//
+//        return config
+//
+//    }
+        public mutating func getOrAdd(config: ATNConfig) -> ATNConfig {
+    
+            let h = hash(config)
+    
+            if let configList = cache[h] {
+                return configList
+            } else {
+                cache[h] = config
             }
+    
+            return config
+    
         }
-
-        if configList == nil {
-            cache[h] = [config]
-        } else {
-            configList?.append(config)
-        }
-
-        return config
-
-    }
     public var isEmpty: Bool {
         return cache.isEmpty
     }
 
+//    public func contains(config: ATNConfig) -> Bool {
+//
+//        let h = hash(config)
+//        if let configList = cache[h] {
+//            for c in configList {
+//                if equal(c, config) {
+//                    return true
+//                }
+//            }
+//        }
+//
+//        return false
+//
+//    }
     public func contains(config: ATNConfig) -> Bool {
-
+        
         let h = hash(config)
-        if let configList = cache[h] {
-            for c in configList {
-                if equal(c, config) {
-                    return true
-                }
-            }
+        if let _ = cache[h] {
+            return true
         }
-
+        
         return false
-
+        
     }
-
-    public func removeAll() {
-        cache.removeAll()
+    public mutating func removeAll() {
+        cache.clear() 
     }
 
 }

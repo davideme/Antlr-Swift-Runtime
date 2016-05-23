@@ -109,7 +109,7 @@ public class RuleContext: RuleNode {
         var p: RuleContext? = self
         while p != nil {
             p = p!.parent
-            n++
+            n += 1
         }
         return n
     }
@@ -152,12 +152,13 @@ public class RuleContext: RuleNode {
      */
 
     public override func getText() -> String {
-        if getChildCount() == 0 {
+        let length = getChildCount()
+        if length == 0 {
             return ""
         }
 
         let builder: StringBuilder = StringBuilder()
-        for var i: Int = 0; i < getChildCount(); i++ {
+        for i in 0..<length {
             builder.append((getChild(i) as! ParseTree).getText())
         }
 
@@ -252,7 +253,10 @@ public class RuleContext: RuleNode {
         let p2: RuleContext? = nil
         return toString(p1, p2)
     }
-
+    
+     public override var debugDescription: String {
+         return description
+    }
 
     public final func toString<T:ATNSimulator>(recog: Recognizer<T>) -> String {
         return toString(recog, ParserRuleContext.EMPTY)

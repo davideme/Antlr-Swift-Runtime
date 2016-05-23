@@ -181,7 +181,7 @@ public class BufferedTokenStream: TokenStream {
             return 0
         }
 
-        for var i: Int = 0; i < n; i++ {
+        for i in 0..<n {
             let t: Token = try tokenSource.nextToken()
             if t is WritableToken {
                 (t as! WritableToken).setTokenIndex(tokens.count)
@@ -206,7 +206,8 @@ public class BufferedTokenStream: TokenStream {
     }
 
     /** Get all tokens from start..stop inclusively */
-    public func get(start: Int, var _ stop: Int) throws -> Array<Token>? {
+    public func get(start: Int,_ stop: Int) throws -> Array<Token>? {
+        var stop = stop
         if start < 0 || stop < 0 {
             return nil
         }
@@ -215,7 +216,7 @@ public class BufferedTokenStream: TokenStream {
         if stop >= tokens.count {
             stop = tokens.count - 1
         }
-        for var i: Int = start; i <= stop; i++ {
+        for i in start...stop {
             let t: Token = tokens[i]
             if t.getType() == BufferedTokenStream.EOF {
                 break
@@ -318,7 +319,7 @@ public class BufferedTokenStream: TokenStream {
 
 
         var filteredTokens: Array<Token> = Array<Token>()
-        for var i: Int = start; i <= stop; i++ {
+        for i in start...stop {
             let t: Token = tokens[i]
             if types == nil || types!.contains(t.getType()) {
                 filteredTokens.append(t)
@@ -345,7 +346,8 @@ public class BufferedTokenStream: TokenStream {
      * the EOF token if there are no tokens on channel between {@code i} and
      * EOF.
      */
-    internal func nextTokenOnChannel(var i: Int, _ channel: Int) throws -> Int {
+    internal func nextTokenOnChannel(i: Int, _ channel: Int) throws -> Int {
+        var i = i
         try sync(i)
         if i >= size() {
             return size() - 1
@@ -357,7 +359,7 @@ public class BufferedTokenStream: TokenStream {
                 return i
             }
 
-            i++
+            i += 1
             try sync(i)
             token = tokens[i]
         }
@@ -375,7 +377,8 @@ public class BufferedTokenStream: TokenStream {
      * index is returned. This is due to the fact that the EOF token is treated
      * as though it were on every channel.</p>
      */
-    internal func previousTokenOnChannel(var i: Int, _ channel: Int) throws -> Int {
+    internal func previousTokenOnChannel(i: Int, _ channel: Int) throws -> Int {
+        var i = i
         try sync(i)
         if i >= size() {
             // the EOF token is on every channel
@@ -388,7 +391,7 @@ public class BufferedTokenStream: TokenStream {
                 return i
             }
 
-            i--
+            i -= 1
         }
 
         return i
@@ -465,7 +468,7 @@ public class BufferedTokenStream: TokenStream {
 
     internal func filterForChannel(from: Int, _ to: Int, _ channel: Int) -> Array<Token>? {
         var hidden: Array<Token> = Array<Token>()
-        for var i: Int = from; i <= to; i++ {
+        for i in from...to {
             let t: Token = tokens[i]
             if channel == -1 {
                 if t.getChannel() != Lexer.DEFAULT_TOKEN_CHANNEL {
@@ -510,7 +513,7 @@ public class BufferedTokenStream: TokenStream {
         }
 
         let buf: StringBuilder = StringBuilder()
-        for var i: Int = start; i <= stop; i++ {
+        for i in start...stop {
             let t: Token = tokens[i]
             if t.getType() == BufferedTokenStream.EOF {
                 break

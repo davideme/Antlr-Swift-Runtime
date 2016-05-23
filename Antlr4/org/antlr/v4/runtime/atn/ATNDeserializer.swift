@@ -89,7 +89,8 @@ public class ATNDeserializer {
         self.init(ATNDeserializationOptions.getDefaultOptions())
     }
     // private var once = dispatch_once_t()
-    public init(var _ deserializationOptions: ATNDeserializationOptions?) {
+    public init(_ deserializationOptions: ATNDeserializationOptions?) {
+        var deserializationOptions = deserializationOptions
         if deserializationOptions == nil {
             deserializationOptions = ATNDeserializationOptions.getDefaultOptions()
         }
@@ -126,12 +127,14 @@ public class ATNDeserializer {
         //TODO:data = data.clone();
         var data = inData
         // don't adjust the first value since that's the version number
-        for var i: Int = 1; i < data.count; i++ {
+        let length = data.count
+        for i in 1..<length {
             data[i] = Character(integerLiteral: data[i].unicodeValue - 2)
         }
 
         var p: Int = 0
-        let version: Int = data[p++].unicodeValue    //toInt(data[p++]);
+        let version: Int = data[p].unicodeValue    //toInt(data[p++]);
+        p += 1
         if version != ATNDeserializer.SERIALIZED_VERSION {
 
             let reason: String = "Could not deserialize ATN with version \(version) (expected \(ATNDeserializer.SERIALIZED_VERSION))."
@@ -149,8 +152,10 @@ public class ATNDeserializer {
         let supportsPrecedencePredicates: Bool = isFeatureSupported(ATNDeserializer.ADDED_PRECEDENCE_TRANSITIONS, uuid)
         let supportsLexerActions: Bool = isFeatureSupported(ATNDeserializer.ADDED_LEXER_ACTIONS, uuid)
 
-        let grammarType: ATNType = ATNType(rawValue: toInt(data[p++]))!
-        let maxTokenType: Int = toInt(data[p++])
+        let grammarType: ATNType = ATNType(rawValue: toInt(data[p]))!
+        p += 1
+        let maxTokenType: Int = toInt(data[p])
+        p += 1
         let atn: ATN = ATN(grammarType, maxTokenType)
 
         //
@@ -158,16 +163,19 @@ public class ATNDeserializer {
         //
         var loopBackStateNumbers: Array<(LoopEndState, Int)> = Array<(LoopEndState, Int)>()
         var endStateNumbers: Array<(BlockStartState, Int)> = Array<(BlockStartState, Int)>()
-        let nstates: Int = toInt(data[p++])
-        for var i: Int = 0; i < nstates; i++ {
-            let stype: Int = toInt(data[p++])
+        let nstates: Int = toInt(data[p])
+        p += 1
+        for _ in 0..<nstates {
+            let stype: Int = toInt(data[p])
+            p += 1
             // ignore bad type of states
             if stype == ATNState.INVALID_TYPE {
                 atn.addState(nil)
                 continue
             }
 
-            var ruleIndex: Int = toInt(data[p++])
+            var ruleIndex: Int = toInt(data[p])
+            p += 1
             if ruleIndex == Int.max {
                 // Character.MAX_VALUE
                 ruleIndex = -1
@@ -176,11 +184,13 @@ public class ATNDeserializer {
             let s: ATNState = try stateFactory(stype, ruleIndex)!
             if stype == ATNState.LOOP_END {
                 // special case
-                let loopBackStateNumber: Int = toInt(data[p++])
+                let loopBackStateNumber: Int = toInt(data[p])
+                p += 1
                 loopBackStateNumbers.append((s as! LoopEndState, loopBackStateNumber))
             } else {
                 if s is BlockStartState {
-                    let endStateNumber: Int = toInt(data[p++])
+                    let endStateNumber: Int = toInt(data[p])
+                    p += 1
                     endStateNumbers.append((s as! BlockStartState, endStateNumber))
                 }
             }
@@ -196,16 +206,20 @@ public class ATNDeserializer {
             pair.0.endState = atn.states[pair.1] as? BlockEndState
         }
 
-        let numNonGreedyStates: Int = toInt(data[p++])
-        for var i: Int = 0; i < numNonGreedyStates; i++ {
-            let stateNumber: Int = toInt(data[p++])
+        let numNonGreedyStates: Int = toInt(data[p])
+        p += 1
+        for _ in 0..<numNonGreedyStates{
+            let stateNumber: Int = toInt(data[p])
+            p += 1
             (atn.states[stateNumber] as! DecisionState).nonGreedy = true
         }
 
         if supportsPrecedencePredicates {
-            let numPrecedenceStates: Int = toInt(data[p++])
-            for var i: Int = 0; i < numPrecedenceStates; i++ {
-                let stateNumber: Int = toInt(data[p++])
+            let numPrecedenceStates: Int = toInt(data[p])
+            p += 1
+            for _ in 0..<numPrecedenceStates {
+                let stateNumber: Int = toInt(data[p])
+                p += 1
                 (atn.states[stateNumber] as! RuleStartState).isPrecedenceRule = true
             }
         }
@@ -213,18 +227,21 @@ public class ATNDeserializer {
         //
         // RULES
         //
-        let nrules: Int = toInt(data[p++])
+        let nrules: Int = toInt(data[p])
+        p += 1
         if atn.grammarType == ATNType.LEXER {
             atn.ruleToTokenType = [nrules]
         }
 
         atn.ruleToStartState = [RuleStartState]() // [nrules];
-        for var i: Int = 0; i < nrules; i++ {
-            let s: Int = toInt(data[p++])
+        for i in 0..<nrules {
+            let s: Int = toInt(data[p])
+            p += 1
             let startState: RuleStartState = atn.states[s] as! RuleStartState
             atn.ruleToStartState[i] = startState
             if atn.grammarType == ATNType.LEXER {
-                var tokenType: Int = toInt(data[p++])
+                var tokenType: Int = toInt(data[p])
+                p += 1
                 if tokenType == 0xFFFF {
                     tokenType = CommonToken.EOF
                 }
@@ -234,7 +251,8 @@ public class ATNDeserializer {
                 if !isFeatureSupported(ATNDeserializer.ADDED_LEXER_ACTIONS, uuid) {
                     // this piece of unused metadata was serialized prior to the
                     // addition of LexerAction
-                    var actionIndexIgnored: Int = toInt(data[p++])
+                    var actionIndexIgnored: Int = toInt(data[p])
+                    p += 1
                     if actionIndexIgnored == 0xFFFF {
                         actionIndexIgnored = -1
                     }
@@ -256,30 +274,34 @@ public class ATNDeserializer {
         //
         // MODES
         //
-        let nmodes: Int = toInt(data[p++])
-        for var i: Int = 0; i < nmodes; i++ {
-            let s: Int = toInt(data[p++])
-
-            atn.modeToStartState.append(atn.states[s] as! TokensStartState)
+        let nmodes: Int = toInt(data[p])
+        p += 1
+        for _ in 0..<nmodes {
+            let s: Int = toInt(data[p])
+            p += 1
+            atn.appendModeToStartState(atn.states[s] as! TokensStartState)
+            //atn.modeToStartState.append(atn.states[s] as! TokensStartState)
         }
 
         //
         // SETS
         //
         var sets: Array<IntervalSet> = Array<IntervalSet>()
-        let nsets: Int = toInt(data[p++])
-        for var i: Int = 0; i < nsets; i++ {
+        let nsets: Int = toInt(data[p])
+        p += 1
+        for _ in 0..<nsets {
             let nintervals: Int = toInt(data[p])
-            p++
+            p += 1
             let set: IntervalSet = try IntervalSet()
             sets.append(set)
 
-            let containsEof: Bool = toInt(data[p++]) != 0
+            let containsEof: Bool = toInt(data[p]) != 0
+            p += 1
             if containsEof {
                 try set.add(-1)
             }
 
-            for var j: Int = 0; j < nintervals; j++ {
+            for _ in 0..<nintervals {
                 try set.add(toInt(data[p]), toInt(data[p + 1]))
                 p += 2
             }
@@ -288,8 +310,9 @@ public class ATNDeserializer {
         //
         // EDGES
         //
-        let nedges: Int = toInt(data[p++])
-        for var i: Int = 0; i < nedges; i++ {
+        let nedges: Int = toInt(data[p])
+        p += 1
+        for _ in 0..<nedges {
             let src: Int = toInt(data[p])
             let trg: Int = toInt(data[p + 1])
             let ttype: Int = toInt(data[p + 2])
@@ -305,7 +328,8 @@ public class ATNDeserializer {
 
         // edges for rule stop states can be derived, so they aren't serialized
         for state: ATNState? in atn.states {
-            for var i: Int = 0; i < state!.getNumberOfTransitions(); i++ {
+            let length = state!.getNumberOfTransitions()
+            for i in 0..<length {
                 let t: Transition = state!.transition(i)
                 if !(t is RuleTransition) {
                     continue
@@ -343,7 +367,8 @@ public class ATNDeserializer {
 
             if state is PlusLoopbackState {
                 let loopbackState: PlusLoopbackState = state as! PlusLoopbackState
-                for var i: Int = 0; i < loopbackState.getNumberOfTransitions(); i++ {
+                let length = loopbackState.getNumberOfTransitions()
+                for i in 0..<length {
                     let target: ATNState = loopbackState.transition(i).target
                     if target is PlusBlockStartState {
                         (target as! PlusBlockStartState).loopBackState = loopbackState
@@ -352,7 +377,8 @@ public class ATNDeserializer {
             } else {
                 if state is StarLoopbackState {
                     let loopbackState: StarLoopbackState = state as! StarLoopbackState
-                    for var i: Int = 0; i < loopbackState.getNumberOfTransitions(); i++ {
+                    let length = loopbackState.getNumberOfTransitions()
+                    for i in 0..<length {
                         let target: ATNState = loopbackState.transition(i).target
                         if target is StarLoopEntryState {
                             (target as! StarLoopEntryState).loopBackState = loopbackState
@@ -365,11 +391,14 @@ public class ATNDeserializer {
         //
         // DECISIONS
         //
-        let ndecisions: Int = toInt(data[p++])
-        for var i: Int = 1; i <= ndecisions; i++ {
-            let s: Int = toInt(data[p++])
+        let ndecisions: Int = toInt(data[p])
+        p += 1
+        for i in 1...ndecisions {
+            let s: Int = toInt(data[p])
+            p += 1
             let decState: DecisionState = atn.states[s] as! DecisionState
-            atn.decisionToState.append(decState)
+            atn.appendDecisionToState(decState)
+            //atn.decisionToState.append(decState)
             decState.decision = i - 1
         }
 
@@ -379,14 +408,18 @@ public class ATNDeserializer {
         if atn.grammarType == ATNType.LEXER {
             if supportsLexerActions {
                 atn.lexerActions = [LexerAction]()   //[toInt(data[p++])];
-                for var i: Int = 0; i < atn.lexerActions.count; i++ {
-                    let actionType: LexerActionType = LexerActionType(rawValue: toInt(data[p++]))! //LexerActionType.values()[toInt(data[p++])];
-                    var data1: Int = toInt(data[p++])
+                let length = atn.lexerActions.count
+                for i in 0..<length {
+                    let actionType: LexerActionType = LexerActionType(rawValue: toInt(data[p]))! //LexerActionType.values()[toInt(data[p++])];
+                    p += 1
+                    var data1: Int = toInt(data[p])
+                    p += 1
                     if data1 == 0xFFFF {
                         data1 = -1
                     }
 
-                    var data2: Int = toInt(data[p++])
+                    var data2: Int = toInt(data[p])
+                    p += 1
                     if data2 == 0xFFFF {
                         data2 = -1
                     }
@@ -401,7 +434,8 @@ public class ATNDeserializer {
                 // form, which is the index of a LexerCustomAction
                 var legacyLexerActions: Array<LexerAction> = Array<LexerAction>()
                 for state: ATNState? in atn.states {
-                    for var i: Int = 0; i < state!.getNumberOfTransitions(); i++ {
+                    let length = state!.getNumberOfTransitions()
+                    for i in 0..<length {
                         let transition: Transition = state!.transition(i)
                         if !(transition is ActionTransition) {
                             continue
@@ -427,11 +461,12 @@ public class ATNDeserializer {
 
         if deserializationOptions.isGenerateRuleBypassTransitions() && atn.grammarType == ATNType.PARSER {
             atn.ruleToTokenType = [Int]()  //new int[atn.ruleToStartState.length];
-            for var i: Int = 0; i < atn.ruleToStartState.count; i++ {
+            let length = atn.ruleToStartState.count
+            for i in 0..<length {
                 atn.ruleToTokenType[i] = atn.maxTokenType + i + 1
             }
 
-            for var i: Int = 0; i < atn.ruleToStartState.count; i++ {
+            for i in 0..<length {
                 let bypassStart: BasicBlockStartState = BasicBlockStartState()
                 bypassStart.ruleIndex = i
                 atn.addState(bypassStart)
@@ -631,7 +666,7 @@ public class ATNDeserializer {
         }
 
         atn.ruleToStartState = [RuleStartState](count: nrules, repeatedValue: RuleStartState()) // [nrules];
-        for var i: Int = 0; i < nrules; i++ {
+        for i in 0..<nrules {
             let currentRuleToStartState = ruleToStartState[i]
             let s: Int = currentRuleToStartState.objectForKey("stateNumber") as! Int
             let startState: RuleStartState = atn.states[s] as! RuleStartState
@@ -668,7 +703,8 @@ public class ATNDeserializer {
         //for  var i : Int=0; i<nmodes; i++ {
         for stateNumber in modeToStartState {
             let s: Int = stateNumber
-            atn.modeToStartState.append(atn.states[s] as! TokensStartState)
+            atn.appendModeToStartState(atn.states[s] as! TokensStartState)
+            //atn.modeToStartState.append(atn.states[s] as! TokensStartState)
         }
 
 
@@ -681,7 +717,7 @@ public class ATNDeserializer {
         let nsets: Int = dict.objectForKey("nsets") as! Int
         let intervalSet = dict.objectForKey("IntervalSet") as! [NSDictionary]
 
-        for var i: Int = 0; i < nsets; i++ {
+        for i in 0..<nsets {
             let setBuilder = intervalSet[i]
             let nintervals: Int = setBuilder.objectForKey("size") as! Int
 
@@ -695,7 +731,7 @@ public class ATNDeserializer {
             let intervalsBuilder = setBuilder.objectForKey("Intervals") as! [NSDictionary]
 
 
-            for var j: Int = 0; j < nintervals; j++ {
+            for j in 0..<nintervals {
                 let vals = intervalsBuilder[j]
                 try set.add((vals.objectForKey("a") as! Int), (vals.objectForKey("b") as! Int))
 
@@ -729,7 +765,8 @@ public class ATNDeserializer {
 
         // edges for rule stop states can be derived, so they aren't serialized
         for state: ATNState? in atn.states {
-            for var i: Int = 0; i < state!.getNumberOfTransitions(); i++ {
+            let length = state!.getNumberOfTransitions()
+            for i in 0..<length {
                 let t: Transition = state!.transition(i)
                 if !(t is RuleTransition) {
                     continue
@@ -767,7 +804,8 @@ public class ATNDeserializer {
 
             if state is PlusLoopbackState {
                 let loopbackState: PlusLoopbackState = state as! PlusLoopbackState
-                for var i: Int = 0; i < loopbackState.getNumberOfTransitions(); i++ {
+                let length = loopbackState.getNumberOfTransitions()
+                for i in 0..<length {
                     let target: ATNState = loopbackState.transition(i).target
                     if target is PlusBlockStartState {
                         (target as! PlusBlockStartState).loopBackState = loopbackState
@@ -776,7 +814,8 @@ public class ATNDeserializer {
             } else {
                 if state is StarLoopbackState {
                     let loopbackState: StarLoopbackState = state as! StarLoopbackState
-                    for var i: Int = 0; i < loopbackState.getNumberOfTransitions(); i++ {
+                    let length = loopbackState.getNumberOfTransitions()
+                    for i in 0..<length {
                         let target: ATNState = loopbackState.transition(i).target
                         if target is StarLoopEntryState {
                             (target as! StarLoopEntryState).loopBackState = loopbackState
@@ -791,11 +830,12 @@ public class ATNDeserializer {
         // DECISIONS
         //
         let ndecisions: [Int] = dict.objectForKey("decisionToState") as! [Int]
-
-        for var i: Int = 0; i < ndecisions.count; i++ {
+        let length = ndecisions.count
+        for i in 0..<length {
             let s: Int = ndecisions[i]
             let decState: DecisionState = atn.states[s] as! DecisionState
-            atn.decisionToState.append(decState)
+            atn.appendDecisionToState(decState)
+            //atn.decisionToState.append(decState)
             decState.decision = i
         }
 
@@ -806,7 +846,8 @@ public class ATNDeserializer {
             let lexerActionsBuilder = dict.objectForKey("lexerActions") as! [NSDictionary]
             if supportsLexerActions {
                 atn.lexerActions = [LexerAction](count: lexerActionsBuilder.count, repeatedValue: LexerAction())   //[toInt(data[p++])];
-                for var i: Int = 0; i < atn.lexerActions.count; i++ {
+                let length = atn.lexerActions.count
+                for i in 0..<length {
                     let actionTypeValue = lexerActionsBuilder[i].objectForKey("actionType") as! Int
                     let actionType: LexerActionType = LexerActionType(rawValue: actionTypeValue)! //LexerActionType.values()[toInt(data[p++])];
                     let data1: Int = lexerActionsBuilder[i].objectForKey("a") as! Int
@@ -825,7 +866,8 @@ public class ATNDeserializer {
                 // form, which is the index of a LexerCustomAction
                 var legacyLexerActions: Array<LexerAction> = Array<LexerAction>()
                 for state: ATNState? in atn.states {
-                    for var i: Int = 0; i < state!.getNumberOfTransitions(); i++ {
+                    let length = state!.getNumberOfTransitions()
+                    for i in 0..<length {
                         let transition: Transition = state!.transition(i)
                         if !(transition is ActionTransition) {
                             continue
@@ -851,11 +893,12 @@ public class ATNDeserializer {
 
         if deserializationOptions.isGenerateRuleBypassTransitions() && atn.grammarType == ATNType.PARSER {
             atn.ruleToTokenType = [Int]()
-            for var i: Int = 0; i < atn.ruleToStartState.count; i++ {
+            let length = atn.ruleToStartState.count
+            for i in 0..<length {
                 atn.ruleToTokenType[i] = atn.maxTokenType + i + 1
             }
 
-            for var i: Int = 0; i < atn.ruleToStartState.count; i++ {
+            for i in 0..<length {
                 let bypassStart: BasicBlockStartState = BasicBlockStartState()
                 bypassStart.ruleIndex = i
                 atn.addState(bypassStart)

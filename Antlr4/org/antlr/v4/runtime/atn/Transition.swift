@@ -95,7 +95,7 @@ public class Transition {
 
     /** The target of this transition. */
 
-    public var target: ATNState
+    public final var target: ATNState
 
     init(_ target: ATNState) {
 
@@ -104,7 +104,7 @@ public class Transition {
     }
 
     public func getSerializationType() -> Int {
-        RuntimeException(__FUNCTION__ + " must be overridden")
+        RuntimeException(#function + " must be overridden")
         fatalError()
     }
 
@@ -127,7 +127,7 @@ public class Transition {
     }
 
     public func matches(symbol: Int, _ minVocabSymbol: Int, _ maxVocabSymbol: Int) -> Bool {
-        RuntimeException(__FUNCTION__ + " must be overridden")
+        RuntimeException(#function + " must be overridden")
         fatalError()
     }
 }
