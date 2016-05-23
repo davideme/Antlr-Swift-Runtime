@@ -1355,7 +1355,7 @@ public class ParserATNSimulator: ATNSimulator {
     
     final internal func closure(config: ATNConfig,
         _ configs: ATNConfigSet,
-        inout _ closureBusy: Set<ATNConfig>,
+        _ closureBusy: inout Set<ATNConfig>,
         _ collectPredicates: Bool,
         _ fullCtx: Bool,
         _ treatEofAsEpsilon: Bool) throws {
@@ -1369,7 +1369,7 @@ public class ParserATNSimulator: ATNSimulator {
     
     final internal func closureCheckingStopState(config: ATNConfig,
         _ configs: ATNConfigSet,
-        inout _ closureBusy: Set<ATNConfig>,
+        _ closureBusy: inout Set<ATNConfig>,
         _ collectPredicates: Bool,
         _ fullCtx: Bool,
         _ depth: Int,
@@ -1437,7 +1437,7 @@ public class ParserATNSimulator: ATNSimulator {
     /** Do the actual work of walking epsilon edges */
     final internal func closure_(config: ATNConfig,
         _ configs: ATNConfigSet,
-        inout _ closureBusy: Set<ATNConfig>,
+        _ closureBusy: inout Set<ATNConfig>,
         _ collectPredicates: Bool,
         _ fullCtx: Bool,
         _ depth: Int,
@@ -1755,7 +1755,7 @@ public class ParserATNSimulator: ATNSimulator {
         return "\(displayName) <\(t)>"
     }
     
-    public final func getLookaheadName(input: TokenStream) throws -> String {
+    public final func getLookaheadName(_ input: TokenStream) throws -> String {
         return try getTokenName(input.LA(1))
     }
     
@@ -1880,7 +1880,7 @@ public class ParserATNSimulator: ATNSimulator {
      * state if {@code D} is already in the DFA, or {@code D} itself if the
      * state was not already present.
      */
-    final func addDFAState(dfa: DFA, _ D: DFAState) throws -> DFAState {
+    final func addDFAState(_ dfa: DFA, _ D: DFAState) throws -> DFAState {
         if D == ATNSimulator.ERROR {
             return D
         }

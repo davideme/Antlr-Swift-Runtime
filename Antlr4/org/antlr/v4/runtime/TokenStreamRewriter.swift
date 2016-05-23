@@ -384,7 +384,7 @@ public class TokenStreamRewriter {
         
         /** Get all operations before an index of a particular kind */
         
-        final func getKindOfOps<T: RewriteOperation>(inout rewrites: Array<RewriteOperation?>, _ kind: T.Type, _ before: Int ) ->  Array<Int>  {
+        final func getKindOfOps<T: RewriteOperation>( rewrites: inout Array<RewriteOperation?>, _ kind: T.Type, _ before: Int ) ->  Array<Int>  {
             
             let length = min(before,rewrites.count)
             var op = Array<Int>()
@@ -430,7 +430,7 @@ public class TokenStreamRewriter {
      *  the indicated instruction (via instructionIndex) is no
      *  longer in the stream. UNTESTED!
      */
-    public func rollback(programName: String, _ instructionIndex: Int) {
+    public func rollback(_ programName: String, _ instructionIndex: Int) {
         let program: RewriteOperationArray? = programs[programName]
         if program != nil {
             program!.rollback(instructionIndex)
@@ -458,7 +458,7 @@ public class TokenStreamRewriter {
         insertAfter(programName, t.getTokenIndex(), text)
     }
     
-    public func insertAfter(programName: String, _ index: Int, _ text: String) {
+    public func insertAfter(_ programName: String, _ index: Int, _ text: String) {
         // to insert after, just insert before next index (even if past end)
         insertBefore(programName, index + 1, text)
     }

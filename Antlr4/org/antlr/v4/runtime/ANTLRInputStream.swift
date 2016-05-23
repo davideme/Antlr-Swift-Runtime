@@ -200,14 +200,14 @@ public class ANTLRInputStream: CharStream {
         return -1
     }
 
-    public func release(marker: Int) {
+    public func release(_ marker: Int) {
     }
 
     /** consume() ahead until p==index; can't just set p=index as we must
      *  update line and charPositionInLine. If we seek backwards, just set p
      */
 
-    public func seek(index: Int) throws {
+    public func seek(_ index: Int) throws {
         var index = index
         if index <= p {
             p = index // just jump; don't update stream state (line, ...)

@@ -132,7 +132,7 @@ extension WeakKeyDictionary: CustomStringConvertible {
     }
 }
 
-extension WeakKeyDictionary: SequenceType {
+extension WeakKeyDictionary: Sequence {
     public func generate() -> IndexingGenerator<Array<(K, V)>> {
         return keyValues.generate()
     }

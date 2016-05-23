@@ -125,7 +125,7 @@ public class ATNConfigSet: Hashable, CustomStringConvertible {
      */
     public final func add(
         config: ATNConfig,
-        inout _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) throws -> Bool {
+        _ mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) throws -> Bool {
             if readonly {
                 throw ANTLRError.IllegalState(msg: "This set is readonly")
                 
@@ -432,7 +432,7 @@ public class ATNConfigSet: Hashable, CustomStringConvertible {
         }
         return alt
     }
-    public final func removeAllConfigsNotInRuleStopState(inout mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?,_ lookToEndOfRule: Bool,_ atn: ATN) throws -> ATNConfigSet {
+    public final func removeAllConfigsNotInRuleStopState( mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?,_ lookToEndOfRule: Bool,_ atn: ATN) throws -> ATNConfigSet {
         if PredictionMode.allConfigsInRuleStopStates(self) {
             return self
         }
@@ -456,7 +456,7 @@ public class ATNConfigSet: Hashable, CustomStringConvertible {
         
         return result
     }
-    public final func applyPrecedenceFilter(inout mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?,_ parser: Parser,_ _outerContext: ParserRuleContext!) throws -> ATNConfigSet {
+    public final func applyPrecedenceFilter( mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?,_ parser: Parser,_ _outerContext: ParserRuleContext!) throws -> ATNConfigSet {
 
         let configSet: ATNConfigSet = ATNConfigSet(fullCtx)
         let length = configs.count

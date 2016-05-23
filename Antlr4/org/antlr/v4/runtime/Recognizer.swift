@@ -134,7 +134,7 @@ public class Recognizer<ATNInterpreter:ATNSimulator> {
 
     }
 
-    public func getTokenType(tokenName: String) -> Int {
+    public func getTokenType(_ tokenName: String) -> Int {
         let ttype: Int? = getTokenTypeMap()[tokenName]
         if ttype != nil {
             return ttype!
@@ -204,7 +204,7 @@ public class Recognizer<ATNInterpreter:ATNSimulator> {
     /** What is the error header, normally line/character position information? */
     //public func getErrorHeader(e : RecognitionException
 
-    public func getErrorHeader(e: AnyObject) -> String {
+    public func getErrorHeader(_ e: AnyObject) -> String {
         let line: Int = (e as! RecognitionException).getOffendingToken().getLine()
         let charPositionInLine: Int = (e as! RecognitionException).getOffendingToken().getCharPositionInLine()
         return "line " + String(line) + ":" + String(charPositionInLine)
@@ -224,7 +224,7 @@ public class Recognizer<ATNInterpreter:ATNSimulator> {
      * {@link org.antlr.v4.runtime.DefaultErrorStrategy#getTokenErrorDisplay}.
      */
     ////@Deprecated
-    public func getTokenErrorDisplay(t: Token?) -> String {
+    public func getTokenErrorDisplay(_ t: Token?) -> String {
         if t == nil {
             return "<no token>"
         }
@@ -246,12 +246,12 @@ public class Recognizer<ATNInterpreter:ATNSimulator> {
     /**
      * @exception NullPointerException if {@code listener} is {@code null}.
      */
-    public func addErrorListener(listener: ANTLRErrorListener) {
+    public func addErrorListener(_ listener: ANTLRErrorListener) {
 
         _listeners.append(listener)
     }
 
-    public func removeErrorListener(listener: ANTLRErrorListener) {
+    public func removeErrorListener(_ listener: ANTLRErrorListener) {
         _listeners = _listeners.filter() {
             $0 !== listener
         }
@@ -320,7 +320,7 @@ public class Recognizer<ATNInterpreter:ATNSimulator> {
     }
 
 
-    public func setTokenFactory(input: TokenFactory) {
+    public func setTokenFactory(_ input: TokenFactory) {
         RuntimeException(#function + "Must be overridden")
 
     }

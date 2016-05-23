@@ -191,7 +191,7 @@ public class Trees {
     }
 
     public static func _findAllNodes(t: ParseTree,
-                                    _ index: Int, _ findTokens: Bool, inout _ nodes: Array<ParseTree>) {
+                                    _ index: Int, _ findTokens: Bool, _ nodes: inout Array<ParseTree>) {
         // check this node (the root) first
         if findTokens && t is TerminalNode {
             let tnode: TerminalNode = t as! TerminalNode

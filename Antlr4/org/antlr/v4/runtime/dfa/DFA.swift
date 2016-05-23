@@ -100,7 +100,7 @@ public class DFA: CustomStringConvertible {
      * @see #isPrecedenceDfa()
      */
     ////@SuppressWarnings("null")
-    public final func getPrecedenceStartState(precedence: Int) throws -> DFAState? {
+    public final func getPrecedenceStartState(_ precedence: Int) throws -> DFAState? {
         if !isPrecedenceDfa() {
             throw ANTLRError.IllegalState(msg: "Only precedence DFAs may contain a precedence start state.")
 
@@ -127,7 +127,7 @@ public class DFA: CustomStringConvertible {
      * @see #isPrecedenceDfa()
      */
     ////@SuppressWarnings({"SynchronizeOnNonFinalField", "null"})
-    public final func setPrecedenceStartState(precedence: Int, _ startState: DFAState) throws {
+    public final func setPrecedenceStartState(_ precedence: Int, _ startState: DFAState) throws {
         if !isPrecedenceDfa() {
             throw ANTLRError.IllegalState(msg: "Only precedence DFAs may contain a precedence start state.")
 
@@ -167,7 +167,7 @@ public class DFA: CustomStringConvertible {
      * @deprecated This method no longer performs any action.
      */
     ////@Deprecated
-    public final func setPrecedenceDfa(precedenceDfa: Bool) throws {
+    public final func setPrecedenceDfa(_ precedenceDfa: Bool) throws {
         if precedenceDfa != isPrecedenceDfa() {
             throw ANTLRError.UnsupportedOperation(msg: "The precedenceDfa field cannot change after a DFA is constructed.")
 
@@ -201,7 +201,7 @@ public class DFA: CustomStringConvertible {
      * @deprecated Use {@link #toString(org.antlr.v4.runtime.Vocabulary)} instead.
      */
     ////@Deprecated
-    public func toString(tokenNames: [String?]?) -> String {
+    public func toString(_ tokenNames: [String?]?) -> String {
         if s0 == nil {
             return ""
         }
@@ -209,7 +209,7 @@ public class DFA: CustomStringConvertible {
         return serializer.toString()
     }
 
-    public func toString(vocabulary: Vocabulary) -> String {
+    public func toString(_ vocabulary: Vocabulary) -> String {
         if s0 == nil {
             return ""
         }

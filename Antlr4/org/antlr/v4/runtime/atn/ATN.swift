@@ -135,7 +135,7 @@ public class ATN {
         return s.decision
     }
     
-    public func getDecisionState(decision: Int) -> DecisionState? {
+    public func getDecisionState(_ decision: Int) -> DecisionState? {
         if  !decisionToState.isEmpty  {
             return decisionToState[decision]
         }

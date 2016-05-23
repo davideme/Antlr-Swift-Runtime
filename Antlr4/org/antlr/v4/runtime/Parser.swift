@@ -355,7 +355,7 @@ public class Parser: Recognizer<ParserATNSimulator> {
      *
      * @throws NullPointerException if {@code} listener is {@code null}
      */
-    public func addParseListener(listener: ParseTreeListener) {
+    public func addParseListener(_ listener: ParseTreeListener) {
         if _parseListeners == nil {
             _parseListeners = Array<ParseTreeListener>()
         }
@@ -454,7 +454,7 @@ public class Parser: Recognizer<ParserATNSimulator> {
 
     /** Tell our token source and error strategy about a new way to create tokens. */
     override
-    public func setTokenFactory(factory: TokenFactory) {
+    public func setTokenFactory(_ factory: TokenFactory) {
         //<AnyObject>
         _input.getTokenSource().setTokenFactory(factory)
     }
@@ -523,7 +523,7 @@ public class Parser: Recognizer<ParserATNSimulator> {
         return _errHandler
     }
 
-    public func setErrorHandler(handler: ANTLRErrorStrategy) {
+    public func setErrorHandler(_ handler: ANTLRErrorStrategy) {
         self._errHandler = handler
     }
 
@@ -533,7 +533,7 @@ public class Parser: Recognizer<ParserATNSimulator> {
     }
 
     override
-    public final func setInputStream(input: IntStream) throws {
+    public final func setInputStream(_ input: IntStream) throws {
         try setTokenStream(input as! TokenStream)
     }
 
@@ -542,7 +542,7 @@ public class Parser: Recognizer<ParserATNSimulator> {
     }
 
     /** Set the token stream and reset the parser. */
-    public func setTokenStream(input: TokenStream) throws {
+    public func setTokenStream(_ input: TokenStream) throws {
         //TODO self._input = nil;
         self._input = nil;
         try reset()

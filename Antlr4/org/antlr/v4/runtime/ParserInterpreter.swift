@@ -170,7 +170,7 @@ public class ParserInterpreter: Parser {
     }
 
     /** Begin parsing at startRuleIndex */
-    public func parse(startRuleIndex: Int) throws -> ParserRuleContext {
+    public func parse(_ startRuleIndex: Int) throws -> ParserRuleContext {
         let startRuleStartState: RuleStartState = atn.ruleToStartState[startRuleIndex]
 
         let rootContext: InterpreterRuleContext = InterpreterRuleContext(nil, ATNState.INVALID_STATE_NUMBER, startRuleIndex)

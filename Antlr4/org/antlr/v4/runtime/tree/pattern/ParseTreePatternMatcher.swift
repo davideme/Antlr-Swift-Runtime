@@ -167,7 +167,7 @@ public class ParseTreePatternMatcher {
     /** Does {@code pattern} matched as rule patternRuleIndex match tree? Pass in a
      *  compiled pattern instead of a string representation of a tree pattern.
      */
-    public func matches(tree: ParseTree, _ pattern: ParseTreePattern) throws -> Bool {
+    public func matches(_ tree: ParseTree, _ pattern: ParseTreePattern) throws -> Bool {
         let labels: MultiMap<String, ParseTree> = MultiMap<String, ParseTree>()
         let mismatchedNode: ParseTree? = try matchImpl(tree, pattern.getPatternTree(), labels)
         return mismatchedNode == nil
@@ -178,7 +178,7 @@ public class ParseTreePatternMatcher {
      * {@code tree} and return a {@link org.antlr.v4.runtime.tree.pattern.ParseTreeMatch} object that contains the
      * matched elements, or the node at which the match failed.
      */
-    public func match(tree: ParseTree, _ pattern: String, _ patternRuleIndex: Int) throws -> ParseTreeMatch {
+    public func match(_ tree: ParseTree, _ pattern: String, _ patternRuleIndex: Int) throws -> ParseTreeMatch {
         let p: ParseTreePattern = try compile(pattern, patternRuleIndex)
         return try match(tree, p)
     }
@@ -190,7 +190,7 @@ public class ParseTreePatternMatcher {
      * string representation of a tree pattern.
      */
 
-    public func match(tree: ParseTree, _ pattern: ParseTreePattern) throws -> ParseTreeMatch {
+    public func match(_ tree: ParseTree, _ pattern: ParseTreePattern) throws -> ParseTreeMatch {
         let labels: MultiMap<String, ParseTree> = MultiMap<String, ParseTree>()
         let mismatchedNode: ParseTree? = try matchImpl(tree, pattern.getPatternTree(), labels)
         return ParseTreeMatch(tree, pattern, labels, mismatchedNode)
@@ -200,7 +200,7 @@ public class ParseTreePatternMatcher {
      * For repeated use of a tree pattern, compile it to a
      * {@link org.antlr.v4.runtime.tree.pattern.ParseTreePattern} using this method.
      */
-    public func compile(pattern: String, _ patternRuleIndex: Int) throws -> ParseTreePattern {
+    public func compile(_ pattern: String, _ patternRuleIndex: Int) throws -> ParseTreePattern {
         let tokenList: Array<Token> = try tokenize(pattern)
         let tokenSrc: ListTokenSource = ListTokenSource(tokenList)
         let tokens: CommonTokenStream = CommonTokenStream(tokenSrc)
@@ -269,7 +269,7 @@ public class ParseTreePatternMatcher {
      * algorithm used by the implementation, and may be overridden.
      */
 
-    internal func matchImpl(tree: ParseTree,
+    internal func matchImpl(_ tree: ParseTree,
                             _ patternTree: ParseTree,
                             _ labels: MultiMap<String, ParseTree>) throws -> ParseTree? {
 
@@ -370,7 +370,7 @@ public class ParseTreePatternMatcher {
         return nil
     }
 
-    public func tokenize(pattern: String) throws -> Array<Token> {
+    public func tokenize(_ pattern: String) throws -> Array<Token> {
         // split pattern into chunks: sea (raw input) and islands (<ID>, <expr>)
         let chunks: Array<Chunk> = try split(pattern)
 
@@ -381,7 +381,7 @@ public class ParseTreePatternMatcher {
                 let tagChunk: TagChunk = chunk as! TagChunk
                 // add special rule token or conjure up new token from name
                 let firstStr = String(tagChunk.getTag()[0])
-                if firstStr.lowercaseString != firstStr {
+                if firstStr.lowercased != firstStr {
                     //if ( Character.isUpperCase(tagChunk.getTag().charAt(0)) ) {
                     let ttype: Int = parser.getTokenType(tagChunk.getTag())
                     if ttype == CommonToken.INVALID_TYPE {
@@ -390,7 +390,7 @@ public class ParseTreePatternMatcher {
                     let t: TokenTagToken = TokenTagToken(tagChunk.getTag(), ttype, tagChunk.getLabel())
                     tokens.append(t)
                 } else {
-                    if firstStr.uppercaseString != firstStr {
+                    if firstStr.uppercased != firstStr {
                         // if ( Character.isLowerCase(tagChunk.getTag().charAt(0)) ) {
                         let ruleIndex: Int = parser.getRuleIndex(tagChunk.getTag())
                         if ruleIndex == -1 {
@@ -419,7 +419,7 @@ public class ParseTreePatternMatcher {
     }
 
     /** Split {@code <ID> = <e:expr> ;} into 4 chunks for tokenizing by {@link #tokenize}. */
-    public func split(pattern: String) throws -> Array<Chunk> {
+    public func split(_ pattern: String) throws -> Array<Chunk> {
         var p: Int = 0
         let n: Int = pattern.length
         var chunks: Array<Chunk> = Array<Chunk>()

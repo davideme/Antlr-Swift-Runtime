@@ -158,7 +158,7 @@ public class LL1Analyzer {
                         _ stopState: ATNState?,
                         _ ctx: PredictionContext?,
                         _ look: IntervalSet,
-                        inout _ lookBusy: Set<ATNConfig>,
+                        _ lookBusy: inout Set<ATNConfig>,
                         _ calledRuleStack: BitSet,
                         _ seeThruPreds: Bool, _ addEOF: Bool) throws {
         // print ("_LOOK(\(s.stateNumber), ctx=\(ctx)");

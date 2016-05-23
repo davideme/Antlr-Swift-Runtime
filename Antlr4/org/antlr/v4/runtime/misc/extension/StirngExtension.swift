@@ -19,19 +19,19 @@ public extension String {
         return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
 
-    func split(separator: String) -> [String] {
+    func split(_ separator: String) -> [String] {
         return self.componentsSeparatedByString(separator)
     }
 
-    func replaceAll(from: String, replacement: String) -> String {
+    func replaceAll(_ from: String, replacement: String) -> String {
         return self.stringByReplacingOccurrencesOfString(from, withString: replacement, options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
 
-    func contains(find: String) -> Bool {
+    func contains(_ find: String) -> Bool {
         return self.rangeOfString(find) != nil
     }
 
-    func containsIgnoreCase(find: String) -> Bool {
+    func containsIgnoreCase(_ find: String) -> Bool {
         return self.lowercaseString.rangeOfString(find.lowercaseString) != nil
     }
 
@@ -39,7 +39,7 @@ public extension String {
         return self.characters.count
     }
 
-    func indexOf(target: String) -> Int {
+    func indexOf(_ target: String) -> Int {
         let range = self.rangeOfString(target)
         if let range = range {
             return self.startIndex.distanceTo(range.startIndex)
@@ -49,7 +49,7 @@ public extension String {
         }
     }
 
-    func indexOf(target: String, startIndex: Int) -> Int {
+    func indexOf(_ target: String, startIndex: Int) -> Int {
 
         let startRange = self.startIndex.advancedBy(startIndex)
         let range = self.rangeOfString(target, options: NSStringCompareOptions.LiteralSearch, range: startRange..<self.endIndex)

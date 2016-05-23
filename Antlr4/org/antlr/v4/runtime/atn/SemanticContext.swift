@@ -474,7 +474,7 @@ public class SemanticContext: Hashable, CustomStringConvertible {
     }
 
     private static func filterPrecedencePredicates(
-            inout collection: Set<SemanticContext>) ->
+            collection: inout Set<SemanticContext>) ->
             Array<PrecedencePredicate> {
 
         let result = collection.filter {

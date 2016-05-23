@@ -54,7 +54,7 @@ func >>>(lhs: Int, rhs: Int) -> Int {
 }
 
 
-public func synced(lock: AnyObject, closure: () -> ()) {
+public func synced(_ lock: AnyObject, closure: () -> ()) {
     objc_sync_enter(lock)
     closure()
     objc_sync_exit(lock)
@@ -75,7 +75,7 @@ public func log(message: String = "", file: String = #file, function: String = #
 }
 
 
-public func RuntimeException(message: String = "", file: String = #file, function: String = #function, lineNum: Int = #line) {
+public func RuntimeException(_ message: String = "", file: String = #file, function: String = #function, lineNum: Int = #line) {
     // #if DEBUG
     let info = "FILE: \(NSURL(fileURLWithPath: file).pathComponents!.last!),FUNC: \(function), LINE: \(lineNum) MESSAGE: \(message)"
     //   #else
@@ -91,7 +91,7 @@ public func toInt(c: Character) -> Int {
     return c.unicodeValue
 }
  
-public func toInt32(data: [Character], _ offset: Int) -> Int {
+public func toInt32(_ data: [Character], _ offset: Int) -> Int {
     return data[offset].unicodeValue | (data[offset + 1].unicodeValue << 16)
 }
 

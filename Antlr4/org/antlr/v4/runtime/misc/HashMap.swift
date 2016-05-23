@@ -62,7 +62,7 @@ func == <K: Hashable, V: Equatable>(lhs: Entry<K,V?>, rhs: Entry<K,V?>) -> Bool 
 
 
 
-public final class HashMap<K: Hashable,V>: SequenceType
+public final class HashMap<K: Hashable,V>: Sequence
 {
     
     /**
@@ -85,7 +85,7 @@ public final class HashMap<K: Hashable,V>: SequenceType
     /**
      * The table, resized as necessary. Length MUST Always be a power of two.
      */
-     var table: [Entry<K,V>!]
+     var table: [Entry<K,V>?]
     
     /**
      * The number of key-value mappings contained in this map.
@@ -200,8 +200,8 @@ public final class HashMap<K: Hashable,V>: SequenceType
      * @see #put(Object, Object)
      */
     public final func get(key: K) -> V? {
-        let hash: Int = HashMap.hash(key.hashValue)
-        var e = table[HashMap.indexFor(hash, table.count)]
+        let hash: Int = HashMap.hash(h: key.hashValue)
+        var e = table[HashMap.indexFor(h: hash, table.count)]
         while e != nil {
             if  e.hash == hash &&  e.key == key
             {
@@ -230,8 +230,8 @@ public final class HashMap<K: Hashable,V>: SequenceType
      * for the key.
      */
     final func getEntry(key: K) -> Entry<K,V>! {
-        let hash: Int =  HashMap.hash(key.hashValue)
-        var e = table[HashMap.indexFor(hash, table.count)]
+        let hash: Int =  HashMap.hash(h: key.hashValue)
+        var e = table[HashMap.indexFor(h: hash, table.count)]
         while e != nil {
             if  e.hash == hash &&  e.key == key
             {
@@ -258,8 +258,8 @@ public final class HashMap<K: Hashable,V>: SequenceType
      */
     public final func put(key: K, _ value: V) -> V? {
         
-        let hash: Int = HashMap.hash(key.hashValue)
-        let i: Int = HashMap.indexFor(hash, table.count)
+        let hash: Int = HashMap.hash(h: key.hashValue)
+        let i: Int = HashMap.indexFor(h: hash, table.count)
         var e = table[i]
         while e != nil {
             if  e.hash == hash &&  e.key == key {
@@ -322,7 +322,7 @@ public final class HashMap<K: Hashable,V>: SequenceType
     /**
      * Transfers all entries from current table to newTable.
      */
-    final func transfer(inout newTable: [Entry<K,V>!]) {
+    final func transfer( newTable: inout [Entry<K,V>!]) {
         
         let newCapacity: Int = newTable.count
         let length = table.count

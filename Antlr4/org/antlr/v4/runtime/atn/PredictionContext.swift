@@ -171,7 +171,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         a: PredictionContext,
         _ b: PredictionContext,
         _ rootIsWildcard: Bool,
-        inout _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
+        _ mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
         var a = a
         var b = b
             // assert ( a != nil && b != nil,"Expected: a!=null&&b!=null");
@@ -242,7 +242,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         a: SingletonPredictionContext,
         _ b: SingletonPredictionContext,
         _ rootIsWildcard: Bool,
-        inout _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
+        _ mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
  
             if (mergeCache != nil) {
                 var previous: PredictionContext? = mergeCache!.get(a, b)
@@ -423,7 +423,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
         a: ArrayPredictionContext,
         _ b: ArrayPredictionContext,
         _ rootIsWildcard: Bool,
-        inout _ mergeCache: DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
+        _ mergeCache: inout DoubleKeyMap<PredictionContext, PredictionContext, PredictionContext>?) -> PredictionContext {
             
             if (mergeCache != nil) {
                 var previous: PredictionContext? = mergeCache!.get(a, b)
@@ -731,7 +731,7 @@ public class PredictionContext: Hashable, CustomStringConvertible {
     }
     
     public static func getAllContextNodes_(context: PredictionContext?,
-        inout _ nodes: Array<PredictionContext>,
+        _ nodes: inout Array<PredictionContext>,
         _ visited: HashMap<PredictionContext, PredictionContext>) {
             //if (context == nil || visited.keys.contains(context!)) {
             if  context == nil || visited[context!] != nil   {

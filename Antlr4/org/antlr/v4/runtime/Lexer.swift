@@ -246,7 +246,7 @@ public class Lexer: Recognizer<LexerATNSimulator>
 
     /** Set the char stream and reset the lexer */
 
-    public override func setInputStream(input: IntStream) throws {
+    public override func setInputStream(_ input: IntStream) throws {
         self._input = nil
         self._tokenFactorySourcePair = (self, _input!)
         try reset()
@@ -352,7 +352,7 @@ public class Lexer: Recognizer<LexerATNSimulator>
         self._token = _token
     }
 
-    public func setType(ttype: Int) {
+    public func setType(_ ttype: Int) {
         _type = ttype
     }
 
